@@ -1,0 +1,560 @@
+Organizing is what you do before you do something, 
+      so that when you do it, it is not all mixed up. 
+       
+- A.A. Milne
+
+4 Text Classification
+
+Introduction
+
+In this chapter we will look at one of the most popular tasks in NLP - text classification. It concerns with assigning one or more groups for a given piece of text, from a larger set of possible groups. It has a wide range of applications across diverse domains such as social media, e-commerce, healthcare, law, marketing, to name a few.  A common example of text classification in our daily lives is classifying emails as spam and non-spam. Even though the purpose and application of text classification may vary from domain to domain, the underlying abstract problem remains the same. This invariance of the core problem and its applications in a myriad of domains makes text classification by far the most widely used NLP task in industry and researched in academia. In this chapter, we will discuss the usefulness of text classification, and how to build text classifiers for your use cases, along with some practical tips for real world scenarios. 
+
+In Machine Learning, classification is the problem of categorizing a data instance into one or more of known classes. The data point can originally be of different formats such as text/speech/image/numeric etc. Text classification is a special instance of the classification problem, where the input data point(s) is text and goal is to categorize the piece of text into one or more buckets (called a class) from a set of predefined buckets (classes). The “text” can be of arbitrary length - a character, a word, a sentence, a paragraph, or a full document. Consider a scenario where we want to classify all customer reviews for a product into three categories: positive, negative, and neutral. The challenge of text classification is to “learn” this categorization from a collection of examples for each of these categories, and predict the categories for new, unseen products and new customer reviews. 
+
+A taxonomy of text classification
+
+Any supervised classification approach, including text classification can be further distinguished into three types based on the number of categories involved: binary, multiclass and multilabel classification. If the number of classes is two, it is called binary classification. If the number of classes are more than two, it is referred to as multiclass classification. Thus, classifying an email as spam or not spam is an example of binary classification setting. Classifying sentiment of a customer review as negative, neutral or positive is an example of multiclass classification.  In both binary and multiclass settings, each document belongs to exactly one class from C, where  C is the set of all possible classes. In multi-label classification, a document can have one or more labels/classes attached to it. For example, a news article on soccer match may simultaneously belong to more than one category such as “sports” and “soccer”. While another news article, say on US elections, may have labels : “politics”, “USA”, and “elections”. Thus, each document has labels that are subset of C. Each article can be in no class, exactly one, multiple classes or all the classes. Sometimes the number of labels in the set C can be very large (known as “extreme classification”). In this chapter we will focus only on binary and multiclass classification, as those are the most common use cases of text classification in the industry. 
+
+Text classification is sometimes also referred to as topic classification, text categorization, or document categorization. For the rest of this book, we will stick to the term text classification. Note that topic classification is different from topic detection, which refers to the problem of uncovering/extracting “topics” from texts, which we will study in Chapter 7. 
+
+In this chapter we will take a closer look at text classification, and build text classifiers using different approaches. Our aim is to give you an overview of some of the most commonly applied techniques, along with practical advice on handling different scenarios and decisions one has to make while building text classification systems in practice. We will start by introducing some common applications of text classification. We will then discuss what an NLP pipeline for text classification looks like, and illustrate the usage of this pipeline to train and test text classifiers using different approaches, ranging from the traditional ones to the state of the art. We then tackle the problem of training data collection/sparsity and different methods to handle it. We end the chapter summarizing what we learnt in all these sections, along with some practical advice. Note that in this chapter we will only deal with the aspect of training and evaluating the text classifiers. Issues related to deploying NLP systems in general, and performing quality assurance will be discussed in the last part of the book (Chapter 11). 
+Applications
+
+Text classification has been of interest in a number application scenarios, ranging from identifying the author of an unknown text in 1800s to USPS’ efforts in 1960s to perform optical character recognition on addresses and zip codes [1].  In the 1990’s, researchers began to successfully apply machine learning algorithms for text classification for large datasets. Email filtering, popularly known as spam classification, is one of the earliest examples of automatic text classification, which impacts our daily lives to this day. From manual analyses of text documents, to purely statistical computer-based approaches, to the state of the art deep neural networks, we have come a long way with text classification. Let us briefly discuss some of the popular applications below, before diving into the different approaches to perform text classification. These examples will also be useful in identifying problems that can be solved using text classification methods in your organization. 
+Content classification and organization: This refers to the task of classifying/tagging large amounts of textual data. This in turn is used to powers use cases like content organization, search and recommendation, to name a few. Examples of such data include news websites, blogs, online book shelves, product reviews, tweets etc.  Tagging product descriptions in an e-commerce website, routing customer service requests in a company to the appropriate support team, organizing our emails into personal/social/promotions etc on gmail - are all examples of using text classification for content classification and organization. 
+Customer Support: Customers commonly use social media to express their opinions/experience of a product or service. Text classification is often used to identify the tweets that brands must respond to (a.k.a actionable) as against those that do not necessitate a response from the brand (a.k.a noise) [26, 27]. To illustrate, consider the following three tweets in Figure 4-1 about the brand Macy’s.
+      Fig 4-1: Tweets reaching out to brand. First one is actionable, other two are noise.
+
+Although all three tweets have explicitly mentioned the brand Macys, only the first one necessitates reply from the customer support team of macy. 
+
+E-Commerce: Customers leave their reviews for a range of products on e-commerce websites such as amazon, ebay etc. An example use of text classification in such scenarios is to understand and analyse the perception of customers towards a product or service based on their comments. This is commonly known as sentiment analysis. It is used extensively by brands across the globe to better understand if the brand is going closer or away from its customers. Rather than categorizing a customer feedback as just positive/negative/neutral, over a period of time, sentiment analysis has evolved into a more sophisticated paradigm: ‘aspect’ based sentiment analysis. To understand this, consider the following customer review of a restaurant: 
+
+
+Fig 4-2 : A review that praises some aspects while criticizes few. 
+
+Would you call the above review as negative, positive or neutral? It is difficult to answer this - the food was great but the service was bad. Practitioners and brands while working with sentiment have realised that any product or service, has multiple facets. In order to understand overall sentiment, understanding each and every facet is important. Text classification plays a major role in performing such fine grained analysis of customer feedback. We will discuss this specific application in detail in Chapter 9. 
+
+Other Applications: Apart from the above mentioned areas, text classification is also used in several other applications in various domains. Some of them are as follows: 
+
+Text classification is used in language identification, for example, to identify the language of new tweets or posts. Google Translate also has an automatic language identification feature. 
+Authorship attribution i.e., identifying the unknown authors of texts from a pool of authors is another popular use case of text classification, used in a range of fields from forensic analysis to literary studies.
+Text classification has been used in the recent past for triaging the forum posts in an online support forum for mental health services [2]. In the NLP community, annual competitions are conducted (e.g., clpsych.org) for solving such text classification problems originating from clinical research.  
+In the recent past, text classification is also used in segregating fake news from actual news. 
+
+This section only serves as an illustration of the wide range of applications of text classification, and the list is not exhaustive. We will now move to building text classification models. 
+A Pipeline for Building Text Classification Systems
+
+In Chapter 2 we discussed some of the common NLP pipelines. Text classification shares some of the steps of its pipeline with what we learnt in that chapter. Figure 4-3 shows the typical steps in building a text classification system. The different steps marked in the figure are described below. 
+
+Fig 4-3 : Flowchart of a text classification pipeline. 
+
+One typically follows the following steps in building a text classification system: 
+Collect or create a labeled dataset suitable for the task
+Split the dataset into two (train and test) or three parts - train, validation (a.k.a development) and test set, decide on evaluation metric(s). 
+Transform raw text into feature vectors
+Train a classifier using the feature vectors and the corresponding labels from the training set
+Using the evaluation metric(s) from step 2, benchmark the model performance on the test set 
+Deploy the model to serve the real-world use case and monitor its performance.
+	
+Steps 3--5 are iterated to explore different variants of features, classification algorithms, their parameters and tuning the hyperparameters before proceeding to step 6 - deploying the optimal model in production. 
+
+Some of the individual steps related to data collection and preprocessing were discussed in the past chapters. For example, Step 1 and Step 2 were discussed in detail in Chapter 2. Chapter 3 focused entirely on Step 3. Our focus in this chapter is on Steps 4--5, considering several approaches and considerations. Towards the end of this chapter we revisit Step 1. Step 6 is dealt with in Chapter 11. To be able to perform Steps 4--5, i.e., to benchmark the performance of a model or compare multiple classifiers, we need the right measure(s) of evaluation. Chapter 2 discussed various general metrics used in evaluating NLP systems. Specifically for evaluating classifiers, among the metrics introduced in Chapter 2, the following are used more commonly: classification accuracy, precision, recall, and F1-score. We will also look at confusion matrices to understand the model performance in detail. 
+
+Apart from these, when classification systems are deployed in real-world applications, Key Performance Indicators (KPIs), specific to a given business use case, are also used to evaluate their impact and Return on Investment (ROI). These are often business metrics that business teams care about. For example, if we are using text classification to automatically route customer service requests, a possible KPI could be the reduction in the waiting time before the request is responded to. In this chapter, we will focus on the NLP evaluation measures. In Section 3 of the book, where we discuss industry verticals specific use NLP cases, we will introduce some KPIs that are often used in those verticals.  
+
+Before we start taking a look at how to build text classifiers using the pipeline we just discussed, let us take a look at two scenarios where this pipeline is not at all needed. 
+A simple classifier without this pipeline
+
+When we talk about the above pipeline, we are referring to a supervised machine learning scenario. However, it is possible to build a simple classifier without machine learning, and without this pipeline. Consider the following problem statement: we are given a corpus of tweets where each tweet is labeled with its corresponding sentiment - negative or positive. For example, a tweet saying: “The new James Bond movie is great!” is clearly expressing a positive sentiment, whereas a tweet saying: “I would never visit this restaurant again, horrible place!!” has a negative sentiment. We wish to build a classification system that will predict the sentiment of an unseen tweet using only the text of the tweet. A simple solution could be to create lists of positive and negative words in English i.e. words that have positive or negative sentiment. We then compare the usage of positive vs negative words in the input tweet and make a prediction based on this information. Further enhancements could involve creating more sophisticated dictionaries with degrees of positive, negative and neutral sentiment of words or formulating specific heuristics (e.g., usage of certain smileys indicate positive sentiment) and using them to make predictions. This approach is called Lexicon-based sentiment analysis. 
+
+Clearly, this does not involve any “learning” of text classification i.e., it is based on a set of heuristics or rules and custom built resources such as dictionaries of words with sentiment. While this approach may seem too simple to perform reasonably well for many real world scenarios, it may enable you to quickly deploy a Minimum Viable Product (MVP)1. Most importantly, this simple model can lead to better understanding of the problem and give you a simple baseline for your evaluation metric and speed. 
+
+From our experience, it is always good to start with such simpler models when you tackle a new NLP problem. However, eventually, we will need learning methods which can infer more insights from large collections of text data and perform better. 
+Using existing text classification APIs
+Another scenario where you may not have to “learn” a classifier or follow this pipeline is when your task is more generic in nature, such as, identifying a general category of a text - e.g., whether it is about technology or music. In such cases, one can use existing APIs such as Google Cloud Natural Language [3] which provide off the shelf content classification models which can identify close to 700 different  categories of text. Another such popular classification task  is sentiment analysis. All major service providers (e.g., Google, Microsoft, Amazon) serve sentiment analysis APIs [3, 30, 31], with varying payment structures. If you are tasked with building a sentiment classifier, you may not have to build your own system anymore, if an existing API addresses your business needs. 
+
+TIP: For tasks that are generic in nature, API are a great place to start with rather than building inhouse models. With respect to text classification, if the classes you are interested in are also available in an API, then that is a great starting point. For example: segregating news articles in to categories such as business, sports, national, international etc.
+
+However, many classification tasks could be specific to your organization’s business needs. For the rest of this chapter, we will address that task of building our own classifier, by considering the pipeline described earlier in this section. 
+One Pipeline, Many Classifiers
+
+Let us now look at building text classifiers by altering steps 3--5 in the pipeline and keeping the remaining steps constant. Good dataset is a prerequisite to start using the pipeline. When we say “good” dataset, we mean a dataset that is a true representation of the data we are likely to see in the production. Throughout this chapter, we will use some of the publicly available datasets for text classification.  A wide range of NLP related datasets including ones for text classification are listed online [4]. Additionally, Figure Eight (Figure-Eight.com, 2019 ) [5] contains a collection of crowd sourced data sets, some of which are relevant for text classification. The UCI Machine Learning repository [6] also contains a few text classification datasets. Recently Google launched a dedicated search system for datasets for machine learning [22].  We will use multiple datasets throughout this chapter instead of sticking to one, to illustrate dataset specific issues one may come across.
+
+Our goal in this chapter is to give you an overview of different approaches. No single approach is known to work universally well on all kinds of data and all classification problems. In the real-world, we will experiment with multiple approaches, evaluate them, and choose one final approach to deploy in practice. 
+
+For the rest of this section, we will use the “Economy news article tone and relevance” dataset from Figure Eight for demonstrating text classification. It consists of 8000 news articles annotated with whether they are relevant for US economy or not (i.e. Yes/No binary classification). The dataset is also imbalanced with ~1500 relevant and ~6500 non-relevant articles, which poses us a challenge of guarding against learning a bias towards the majority category i.e., non-relevant articles. Clearly, learning what is a relevant news article is more challenging with this dataset, than learning what is irrelevant. After all, just guessing everything is irrelevant already gives us 80% accuracy!
+
+Let us explore how a bag of words representation which was introduced in Chapter 3 can be used with this dataset following the pipeline described earlier in this chapter. We will build classifiers using three well-known algorithms: naive bayes, logistic regression, and support vector machines. The notebook related to this section (Ch4/OnePipeline_ManyClassifiers.ipynb in the github repo) shows step by step process following our pipeline using these three algorithms. We will discuss some of the important aspects in this section. 
+Naive Bayes Classifier
+
+Naive Bayes is a probabilistic classifier which uses Bayes’ theorem to classify texts, based on the evidence seen in training data. It estimates the conditional probability of each feature of a given text for each class based on the occurrence of that feature in that class, and multiplies these probabilities of all the features of a given text to compute the final probability of classification for each class. Finally, it chooses the class with maximum probability.  A detailed step by step explanation of the classifier is beyond the scope of this book. However, an interested reader in Naive Bayes can refer to wikipedia [23], and specifically a detailed explanation in the context of text classification, look at Chapter 4 of Jurafsky & Martin [7]. Although simple, naive bayes are commonly used as a baseline algorithm in classification experiments. 
+
+Let us walk through the key steps of an implementation of the pipeline described earlier for our dataset. For this, we use Naive Bayes implementation in sklearn. Once the dataset if loaded, we split the data into train and test data, as shown in the code snippet below:
+
+[Python]
+#Step 1: train-test split
+X = our_data.text 
+#the column text contains textual data to extract features from
+y = our_data.relevance 
+#this is the column we are learning to predict.
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
+# split X and y into training and testing sets. By default, it splits 75% training and 25% test. random_state=1 for reproducibility
+
+The next step is to pre-process the texts and then convert them into feature vectors. While there are many different ways to do the pre-processing, let us say we want to do the following: lowercasing, removal of punctuation, digits and any custom strings, and stopwords. The below code snippet shows this pre-processing and converting the train and test data into feature vectors using CountVectorizer in sklearn, which is the implementation of bag of words approach we discussed in Chapter 3.
+ 
+[Python]
+#Step 2-3: Preprocess and Vectorize train and test data
+vect = CountVectorizer(preprocessor=clean) 
+#clean is a function we defined for pre-processing, seen in the notebook.
+X_train_dtm = vect.fit_transform(X_train)
+X_test_dtm = vect.transform(X_test)
+print(X_train_dtm.shape, X_test_dtm.shape)
+
+Once you run this in the notebook, you will see that we ended up having a feature vector with over 45K features! We now have the data in a format we want i.e., feature vectors. So, the next step is to train and evaluate a classifier. The code snippet below shows how to do the training and evaluation of a naive bayes classifier with the features we extracted above. 
+
+[Python]
+nb = MultinomialNB() #instantiate a Multinomial Naive Bayes classifier
+nb.fit(X_train_dtm, y_train)#train the mode 
+y_pred_class = nb.predict(X_test_dtm)#make class predictions for test data
+
+ Figure 4-4 shows the confusion matrix of this classifier with test data.
+
+Figure 4-4 Confusion Matrix for Naive Bayes classifier
+
+As evident from Figure 4-4, the classifier is doing fairly well with identifying the non-relevant articles correctly, only making errors 14% of the time. However, it does not perform well in comparison to the second category i.e., relevance. The category is identified correctly only 42% of the time. An obvious thought may be to collect more data. This is correct and often the most rewarding approach. But in the interest of covering other approaches we assume that we cannot change it or collect additional data. This is not a farfetched assumption - in industry many a time one does not have the luxury of collecting more data. One has to work with what they have.  We can think of a few possible reasons for this performance and ways to improve this classifier. These are summarized in Table 1 and we will look into some of these later in this Chapter.
+
+
+Reason 1
+Since we extracted all possible features, we ended up in a large, sparse feature vector, where most features are too rare and end up being noise. Sparse feature set also makes training hard. 
+Reason 2
+There are very few examples of relevant articles (~20%) compared to the non-relevant articles (~80%) in the dataset. This class imbalance makes the learning process skewed towards the non-relevant articles category as there are very few examples of “relevant” articles. 
+Reason 3
+Perhaps we need a better learning algorithm 
+Reason 4
+Perhaps we need a better pre-processing and feature extraction mechanism
+Reason 5
+Perhaps we should look for tuning the classifier’s parameters and hyper-parameters 
+	
+Table 4-1: Potential Reasons for poor classifier performance
+
+Let us see how to improve our classification performance by addressing some of the possible reasons. One way to approach Reason 1 is to reduce noise in the feature vectors. The approach in the code example earlier had close to 40,000 features (refer to the jupyter notebook for details). A large number of features introduce sparsity i.e. most of the features in the feature vector are zero and only a few values are non-zero. This in turn affects the ability of the tet classification algorithm to lear.  Let us see what happens if we restrict this to 5000 and re-run the training and evaluation process. This requires us to change the CountVectorizer instantiation in the process as shown in the code snippet below and repeating all the steps. 
+
+[Python]
+vect = CountVectorizer(preprocessor=clean, max_features=5000) #Step-1
+X_train_dtm = vect.fit_transform(X_train)#combined step 2 and 3
+X_test_dtm = vect.transform(X_test)
+nb = MultinomialNB() #instantiate a Multinomial Naive Bayes model
+%time nb.fit(X_train_dtm, y_train)
+#train the model(timing it with an IPython "magic command")
+y_pred_class = nb.predict(X_test_dtm)
+#make class predictions for X_test_dtm
+print("Accuracy: ", metrics.accuracy_score(y_test, y_pred_class))
+
+Figure 4-5 shows the new confusion matrix with this setting. 
+ 
+
+Figure 4-5 Improved classification performance with Naive Bayes and feature selection
+
+Now, clearly, while the average performance seems lower than before, the identification of relevant articles correctly increased by over 20%. At that point, one may wonder whether this is what we want. The answer to that question depends on the problem we are trying to solve. If we care about doing reasonably well with non-relevant article identification, and doing as best as possible with relevant article identification, or do equally on both, we could conclude that reducing the feature vector size was useful for this data set, with Naive Bayes classifier. 
+
+Reason 2 in our list was the problem of skew in data towards the majority class. There are several ways to address this. Two typical approaches are oversampling the instances belonging to minority classes or undersampling the majority class to create a balanced dataset. Imbalanced-Learn [8] is a python library that incorporates some of the sampling methods to address this issue. While we will not delve into the details of this library here, classifiers also have a built in mechanism to address such imbalanced datasets. We will see how to use that in the next subsection, by taking another classifier - Logistic Regression. 
+
+TIP: Class imbalance is one of the most common reasons for a classifier for not doing well. One must always check if this is the case for their task and address it.
+
+To address reason 3, we now move to other algorithms. We begin with logistic regression
+Logistic Regression
+When we described Naive Bayes classifier, we mentioned that it learns the probability of a text for each class, and chooses the one with maximum probability. Such a classifier is called a “generative classifier”. In contrast, there is a “discriminative classifier” that aiims to learn the probability distribution over all classes. Logistic regression is an example of discriminative classifier, and is commonly used in text classification, as a baseline in research and as an MVP in real-world industry scenarios. 
+
+Unlike naive bayes, which estimates probabilities based on feature occurrence in classes, logistic regression “learns” the weights for individual features based on how important they are to make a classification decision. The goal of logistic regression is to learn a linear separator between classes in the training data with the aim of maximizing the probability of the data. This “learning” of feature weights and probability distribution over all classes is done through a function called “logistic” function, and hence the name, logistic regression[9].
+
+Let us take the 5000 dimensional feature vector from the last step of the naive bayes example and train a logistic regression classifier instead of naive bayes. The code snippet below shows how to use Logistic Regression for this task.
+
+[Python]
+from sklearn.linear_model import LogisticRegression 
+logreg = LogisticRegression(class_weight="balanced")
+logreg.fit(X_train_dtm, y_train) 
+y_pred_class = logreg.predict(X_test_dtm)
+print("Accuracy: ", metrics.accuracy_score(y_test, y_pred_class))
+
+This results in a classifier with an accuracy of 73.7%. Figure 4-6 shows the confusion matrix with this approach. 
+
+Figure 4-6: Classification performance with Logistic Regression
+
+Our Logistic Regression classifier instantiation has an argument: class_weight, which is given a value “balanced”. This tells the classifier to boost the weights for classes in the inverse proportion to the number of samples for that class i.e., we expect to see better performance for the less represented classes. You can experiment with this code by removing that argument and re-training the classifier, to witness a fall (by approximately 5%) in the bottom right cell of the confusion matrix.  However, Logistic Regression clearly seems to perform worse than Naive Bayes for this dataset. 
+
+Reason 3 in our list was: “perhaps we need a better learning algorithm”. This gives rise to the question - “What is a better learning algorithm?”. A general rule of thumb in working with machine learning approaches is: there is no one algorithm that learns well on all datasets. A commonly followed approach is to experiment with various algorithms and compare them. 
+
+TIP: Experimenting with various algorithms  is a key step in the development of any text classification solution. 
+
+Let us see if this idea helps us, by replacing logistic regression with a well-known classification algorithm that was shown to be useful for several text classification tasks, called the “Support Vector Machine”. 
+Support Vector Machine (SVM)
+We described logistic regression as a discriminative classifier that learns the weights for individual features, and predicts a probability distribution over the classes. Support Vector Machine, first invented in early 1960s, is a discriminative classifier like logistic regression. However, unlike logistic regression, it aims to look for an optimal hyperplane in a higher dimensional space, which can separate the classes in the data by a maximum margin possible. Further, SVMs are capable of learning even non-linear separations between classes, unlike logistic regression. However, they may also take longer to train. 
+
+SVMs come in various flavors in sklearn. Let us see the use of one of them by keeping everything else the same, and altering maximum features to 1000 instead of 5000 in the previous example. We restirct to 1000 features keeping in mind the time SVM algorithm takes to train. The code snippet below shows how to do this and Figure 4-7 shows the resultant confusion matrix.
+
+[Python]
+from sklearn.svm import LinearSVC
+vect = CountVectorizer(preprocessor=clean, max_features=1000) #Step-1
+X_train_dtm = vect.fit_transform(X_train)#combined step 2 and 3
+X_test_dtm = vect.transform(X_test)
+classifier = LinearSVC(class_weight='balanced') #notice the “balanced” option
+classifier.fit(X_train_dtm, y_train) #fit the model with training data
+y_pred_class = classifier.predict(X_test_dtm)
+print("Accuracy: ", metrics.accuracy_score(y_test, y_pred_class))
+
+
+
+
+Figure 4-7: Confusion Matrix for classification with SVM
+
+When compared to logistic regression, SVMs seem to have done better with “relevant” articles category, although, among this small set of experiments we did, naive bayes, with the smaller set of features, seems to be the best classifier for this dataset. 
+
+All the examples in this section demonstrate how changes in different steps affected the classification performance, and how to interpret the results. Clearly, we excluded many other possibilities such as: exploring other text classification algorithms, changing different parameters of various classifiers, coming up with better pre-processing methods etc. We leave them as further exercises for the reader, using the notebook as a playground. A real world text classification project involves exploring multiple options, starting with the simplest approach in terms of modeling, deployment and scaling, and gradually increasing the complexity. Our eventual goal is to build the classifier that best meets our business needs given all the other constraints.  
+
+Let us now consider a part of Reason 4 in Table 1: better feature representation. So far, in this chapter, we have used bag-of-words features. Let us see how we can use other feature representation techniques that we saw in Chapter 3 for text classification. 
+Using Neural Embeddings in Text Classification
+In the later half of Chapter 3, we discussed feature engineering techniques using neural networks, such as word-embeddings, character-embeddings, and document embeddings. The advantage of using embedding based features is that they create a dense, low-dimensional feature representation instead of the sparse, high-dimensional structure of bag of words/TFIDF and other such features. There are different ways of designing and using features based on neural embeddings. In this section, let us see some ways of using such embedding representations for text classification. 
+Word Embeddings
+Words and ngrams have been primarily used as features in text classification for a long time. Different ways of vectorizing words have been proposed, and we used one such representation in the past section, using CountVectorizer. In the past few years, neural network based architectures became popular for “learning” word representations, which are known as “word embeddings”. We surveyed some of the intuitions behind this in Chapter 3. Let us now take a look at how to use word embeddings as features for text classification. We will use the sentiment labelled sentences dataset from the UCI repository, consisting of dataset consisting of 1500 positive, and 1500 negative sentiment sentences from Amazon, Yelp, and IMDB. All the steps are detailed in the notebook (Ch4/Word2Vec_Example.ipynb). Let us walk through the important steps, and where this approach differs from the previous section’s procedures. 
+
+Loading and pre-processing the text data remains a common step. However, instead of vectorizing the texts using bag of words based features, we will now rely on neural embedding models. As mentioned earlier, we will use a pre-trained embedding model. Word2Vec is a popular algorithm we discussed in Chapter 3, for training word embedding models. There are several pre-trained word2vec models trained on large corpora that one can download from the internet. Here we will use the one from Google [23]. The following code snippet shows how to load this model into python using gensim.
+
+[Python]
+data_path= "/your/folder/path"
+path_to_model = os.path.join(data_path,'GoogleNews-vectors-negative300.bin')
+training_data_path = os.path.join(data_path, "sentiment_sentences.txt")
+#Load W2V model. This will take some time.
+w2v_model = KeyedVectors.load_word2vec_format(path_to_model, binary=True)
+print('done loading Word2Vec')
+
+This is a large model which can be seen as a dictionary where the keys are words in the vocabulary, and the values are their learnt embedding representations. Given a query word, if the word’s embedding is present in the dictionary, it will return the same. How do we use this pre-learnt embedding to represent features? As we discussed in Chapter 3, there are multiple ways of doing this. A simple approach is just to average the embeddings for individual words in text. The code snippet below shows a simple function to do this.
+
+[Python]
+# Creating a feature vector by averaging all embeddings for all sentences
+def embedding_feats(list_of_lists):
+	DIMENSION = 300
+	zero_vector = np.zeros(DIMENSION)
+	feats = []
+	for tokens in list_of_lists:
+    		feat_for_this =  np.zeros(DIMENSION)
+    		count_for_this = 0
+    		for token in tokens:
+        			if token in w2v_model:
+            			feat_for_this += w2v_model[token]
+            			count_for_this +=1
+    		feats.append(feat_for_this/count_for_this)   	 
+	return feats
+
+train_vectors = embedding_feats(texts_processed)
+print(len(train_vectors)) 
+
+Note it uses embeddings only for the words which are present in the dictionary. It ignores the words for which embeddings are absent. Also,  note that the above code will give a single vector with DIMENSION(=300) components., We treat the resulting embedding vector as DIMENSION feature values that represent the entire text. 
+
+Once the feature engineering is done, the final step is similar to what we did in the previous section i.e., use this feature set and train a classifier.  We leave that as an exercise to you (you can refer to the notebook for the code). 
+
+When trained with a Logistic Regression classifier, these features gave a classification accuracy of 81% on our dataset (see the notebook for more details). Considering that we just used an existing word embeddings model, and followed only basic pre-processing steps, this is a great model to have as a baseline!  We saw in Chapter 3 that there are other pre-trained embedding approaches such as GloVe, which can be experimented with for this approach. Gensim, which we used in this example, also supports training our own word embeddings if necessary. If we are working on a custom domain, whose vocabulary is remarkably different from that of the pre-trained news embeddings we used here, it would make sense to train our own embeddings to extract features. 
+In order to  decide whether to train one's own embeddings or use pre trained embeddings - a good rule of thumb is to compute the vocabulary overlap. If the overlap between vocabulary of our custom domain and that of pre trained word embeddings is > 80%, pre trained word embeddings tend to give good results in text classification. 
+
+An important factor to consider when deploying models with embedding based feature extraction approaches is that the learnt or pre-trained embedding models have to be stored and loaded into memory while using these approaches. If the model itself is bulky (e.g., the pre-trained model we used takes 3.6 GB), we need to factor this into our deployment needs. 
+
+TIP: A good way to deal with embeddings in production systems is to load them in a in-memory database such as redis and build a cache on top for faster access.
+Subword Embeddings and fastText
+Word embeddings, as the name indicates, are about word representations. Even off the shelf embeddings seem to work well on a classification task, as we saw earlier. However, if a word in your dataset was not present in the pre-trained model’s vocabulary, how will we get a representation for this word? This problem is popularly known as Out Of Vocabulary (OOV). In our previous example, we just ignored such words from feature extraction. Is there a better way?
+
+We discussed fastText embeddings [28] in Chapter 3. They are based on the idea of enriching word embeddings with sub-word level information. Thus, the embedding representation for each word is represented as a sum of the representations of individual character n-grams. While this may seem like a longer process compared to just estimating word level embeddings, this has two advantages: 
+This approach can handle words that did not appear in training data (OOV).
+The implementation facilitates extremely fast learning on even very large corpora.
+
+While fastText is a general purpose library to learn the embeddings, it also supports off the shelf text classification by providing end-to-end classifier training and testing. i.e., we don’t have to handle feature extraction separately. 
+
+The remaining part of this subsection talks about using fastText classifier [29] for text classification. We will work with DBPedia dataset [10]. It is a balanced dataset consisting of 14 classes, with 40,000 training and 5000 testing examples per class. Thus, the total size of the dataset is 560,000 training and 70,000 testing data points. The step by step process is detailed in the associated Jupyter notebook (Ch4/FastText_Example..ipynb). Let us get started!
+
+The training and test sets are provided as csv files. So, the first step involves reading these files into your python environment, and cleaning the text to remove extraneous characters, similar to what we did in the pre-processing steps for the other classifier examples we saw so far. Once this is done, the process to use fastText is quite simple. The code snippet shows a simple fastText model.
+
+[Python]
+## Using fastText for feature extraction and training
+from fasttext import supervised
+"""fastText expects and training file (csv), a model name as input arguments.
+label_prefix refers to the prefix before label string in the dataset.
+default is __label__. In our dataset, it is __class__.
+There are several other parameters which can be seen in:
+https://pypi.org/project/fasttext/
+"""
+model = supervised(train_file, 'temp', label_prefix="__class__")
+results = model.test(test_file)
+print(results.nexamples, results.precision, results.recall)
+
+If you run this code in the notebook, you will notice that despite the fact that this is a huge dataset, and we gave the classifier raw text and not the feature vector, the training took only a few seconds, and we got an close to 98% precision and recall! As an exercise, try to build a classifier using the same dataset, but with either BOW or word embedding features, and algorithms such as logistic regression. Notice how long will it take for the individual steps of feature extraction and classification learning!
+
+When you have a large dataset, and when learning seems infeasible with the approaches described so far, fastText is definitely a good option to use to set up a strong working baseline! However, there is one concern to keep in mind when using fastText, as it was the case with word2vec embeddings. It uses pretrained character ngram embeddings. Thus, when you save the trained model, it carries the entire character ngram embeddings dictionary with it. This results in a bulky model and can result in engineering issues. For example, the model stored with the name “temp” in the above code sample has the size of close to 450 MB. However, fastText implementation also comes with options to reduce the memory footprint of its classification models with minimal reduction in classification performance [25]. They do this by doing vocabulary pruning and using compression algorithms. Exploring these possibilities could be a good option in cases where large model sizes are a constraint. 
+
+TIP: As of today, fastText is a silver bullet for text classification. It is extremely fast to train and very useful for setting up very strong baselines. The flip side is the model size. 
+
+We hope this discussion gives a good overview of the usefulness of fastText for text classification. What we showed here is a default classification model without any tuning of the hyper-parameters. fastText’s documentation contains more information on the different options to tune your classifier, and to train custom embedding representations for a dataset you want. However, both the embedding representations we saw so far learn a representation of words and characters, and collect them together to form a text representation. Let us see how to directly learn the representation for a document, using the doc2vec approach we discussed earlier in Chapter 3.
+Document Embeddings
+In doc2vec embedding scheme, we learn a direct representation for the entire document (sentence/paragraph) rather than each word. Just as we used word and character embeddings as features for performing text classification, we can also use doc2vec as a feature representation mechanism. Since there are no existing pre-trained models that work with the latest version of doc2vec [11], let us see how to build our own doc2vec model and use it for text classification. 
+
+We will use a dataset called “sentiment analysis: emotion in text” from figure-eight.com, which contains 40,000 tweets labeled with 13 labels signifying different emotions. Let us take the three most frequent labels in this dataset (neutral, worry, happiness) and build a text classifier for classifying new tweets into one of these three classes! The notebook for this subsection (Ch4/Doc2Vec_Example.ipynb) walks you through the steps involved in using doc2vec for text classification and the dataset is also provided with the notebook. 
+
+After loading the dataset and taking a subset of the three most frequent labels, an important step to consider here is pre-processing of the data. What is different here, compared to previous examples? Why can’t we just follow the same procedure as before? There are a few things that are different about tweets, compared to news articles or other such text, as we also briefly discussed in Chapter 2 when we talked about text pre-processing. Firstly, they are very short. Second - our traditional tokenizers may not work well with tweets, splitting smileys, hashtags, twitter handles etc into multiple tokens. Such specialized needs prompted a lot of research in the recent past into NLP for Twitter, which resulted in several pre-processing options for tweets. One such solution is a TweetTokenizer, implemented in NLTK [12] library in Python. We will discuss more of this in Chapter 8. For now, Let us see how we can use a Tweet tokenizer in the following code snippet.
+
+[Python]
+tweeter = TweetTokenizer(strip_handles=True,preserve_case=False)
+mystopwords = set(stopwords.words("english"))
+
+#Function to pre-process and tokenize tweets
+def preprocess_corpus(texts):
+	def remove_stops_digits(tokens):
+    	#Nested function to remove stopwords and digits
+    		return [token for token in tokens if token not in mystopwords and  not token.isdigit()]
+	return [remove_stops_digits(tweeter.tokenize(content)) for content in texts]
+
+mydata = preprocess_corpus(df_subset['content'])
+mycats = df_subset['sentiment']
+
+The next step in this process is to train a doc2vec model to learn tweet representations. Ideally, any large dataset of tweets will work for this step. However, since we don’t have such a ready made corpus, we will split our dataset into train-test, and use the training data for learning the doc2vec representations. First part of this process involves converting the data into a format readable by the doc2vec implementation, which can be done using TaggedDocument class. It is used to represent a document as a list of tokens, followed by a “tag”, which, in its simplest form, can just be the file name or id of the document. However, doc2vec by itself can also be used as a nearest neighbor classifier for both multi-class and multi-label classification problems, using TaggedDocument. We will leave this as an exploratory exercise for the reader. Let us now see how to use train a doc2vec classifier for tweets, through the code snippet below.
+
+[Python]
+#prepare training data in doc2vec format:
+train_doc2vec = [TaggedDocument((d),tags=[str(i)]) for i, d in enumerate(train_data)]
+#Train a doc2vec model to learn tweet representations. Use only training data!!
+model = Doc2Vec(vector_size=50, alpha=0.025, min_count=10, dm =1, epochs=100)
+model.build_vocab(train_doc2vec)
+model.train(train_doc2vec, total_examples=model.corpus_count, epochs=model.epochs)
+model.save("d2v.model")
+print("Model Saved")
+
+Training for doc2vec involves making several choices regarding parameters, as seen in the model definition in the code snippet above. Vector_size refers to the dimensionality of the learned embeddings, alpha is the learning rate, min_count is the minimum frequency of words that remain in vocabulary, dm, which stands for distributed memory is one of the representation learners implemented in doc2vec (the other is dbow, distributed bag of words), epochs are the number of training iterations. There are a few other parameters which can be customized. While there are some guidelines on choosing optimal parameters for training doc2vec models [13], these are not exhaustively validated, and we don’t know if the guidelines work for tweets. 
+The best way to address this issue is to explore a range of values for the ones that matter to you (e.g., dm vs dbow, vector sizes, learning rate) and compare multiple models. How do we compare these models, as they only learn the text representation? One way to do that is to start using these learned representations in a downstream task, i.e., text classification in this case.  Doc2vec’s infer_vector function can be used to infer the vector representation for a given text, using a pre-trained model. Since there is some amount of randomness due to the choise of hyper parameters, the inferred vectors differ each time we extract them. For this reason, to get a stable representation, we run it multiple times (called steps) and aggregate the vectors. Let us use the learned model, to infer features for our data, and train a logistic regression classifier.
+
+[Python]
+#Infer the feature representation for training and test data using the trained model
+model= Doc2Vec.load("d2v.model")
+#infer in multiple steps to get a stable representation.
+train_vectors =  [model.infer_vector(list_of_tokens, steps=50)
+             	for list_of_tokens in train_data]
+test_vectors = [model.infer_vector(list_of_tokens, steps=50)
+           	for list_of_tokens in test_data]
+myclass = LogisticRegression(class_weight="balanced") 
+#because classes are not balanced.
+myclass.fit(train_vectors, train_cats)
+preds = myclass.predict(test_vectors)
+print(classification_report(test_cats, preds))
+
+Now, the performance of this model seems rather poor, achieving an F1 score of 0.51 on a reasonably large corpus, and with only three classes. There can be a couple of interpretations for this poor result. Firstly, unlike full news articles, or even well-formed sentences, tweets contain very little data per instance. Further, people write with a wide variety in spelling and syntax when they tweet. There are a lot of emoticons, in different forms. Our feature representation should be able to capture such aspects. While tuning the algorithm’s by searching a large parameter space for the best model may help, an alternative in such situations could be to explore problem-specific feature representations, as we discussed in Chapter 3. We will see how to do this in Chapter 8. 
+
+An important point to keep in mind when using doc2vec is the same as for fastText. If we have to use doc2vec for feature representation, we have to store the model that learnt the representation. While it is not typically as bulky as fastText, it is also not as fast to train. Such trade-offs need to be considered and compared against, before making a deployment decision.
+
+So far, we saw a range of feature representations and how they play a role for text classification using machine learning algorithms. Let us now turn to a family of algorithms that became popular in the past few years, known as “deep learning”. 
+Deep Learning for Text Classification
+As we discussed in Chapter 1, deep Learning is a family of machine learning algorithms where the learning happens through different kinds of multi-layered neural network architectures. Over the past few years, it has shown remarkable improvements on standard machine learning tasks such as image classification, speech recognition and machine translation. This resulted in a widespread interest in using deep learning for various tasks, including text classification. So far, we have seen how to train different machine learning classifiers, using bag of words and different kinds of embedding representations. Let us now look at how to use deep learning architectures for text classification. 
+Two most commonly used neural network architectures for text classification are: Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs). Long Short Term Memory (LSTM) networks are a popular form of RNNs. In this section, we will learn how to train CNNs and LSTMs for text classification, using the IMDB sentiment classification dataset [14]. A detailed discussion on how the neural network architectures work is beyond the scope of this book. Interested readers are recommended to read the textbook by Goodfellow et.al. [15] for a general theoretical discussion, and Goldberg’s book [16] for NLP specific uses of neural network architectures. Jurafsky and Martin’s book [7] also provides a quick overview of different neural network methods for NLP.
+The first step towards training any machine learning or deep learning model is to define a feature representation. This step was relatively straight forward in the approaches we saw so far, with bag of words or embedding vectors. However, for neural networks, we need further processing of input vectors, as we saw in Chapter 2. Let us quickly recap the steps involved in converting training and test data into a format suitable for the neural network input layers.
+Tokenize the texts and convert them into word index vectors
+Pad the text sequences so that all text vectors are of the same length
+Map every word index to an embedding vector. We do so by multiplying word index vectors with the embedding matrix. The embedding matrix can either be populated using pre-trained embeddings or be trained for embeddings on this corpus.
+Use the output from Step 3 as the input to a neural network architecture. 
+Once these are done, we can proceed with the specification of neural network architectures and training classifiers with them. The Jupyter notebook associated with this section (Ch4/DeepNN_Example.ipynb) will walk you through the entire process from text pre-processing to neural network training and evaluation. We will use Keras, a python based deep learning library.  The code snippet below illustrates Steps 1--2 above:
+
+[Python]
+#Vectorize these text samples into a 2D integer tensor using Keras Tokenizer
+#Tokenizer is fit on training data only, and that is used to tokenize both train and test data.
+tokenizer = Tokenizer(num_words=MAX_NUM_WORDS)
+tokenizer.fit_on_texts(train_texts)
+train_sequences = tokenizer.texts_to_sequences(train_texts) 
+test_sequences = tokenizer.texts_to_sequences(test_texts)
+word_index = tokenizer.word_index
+print('Found %s unique tokens.' % len(word_index))
+#Converting this to sequences to be fed into neural network. Max seq. len is 1000 as set earlier. Initial padding of 0s, until vector is of size MAX_SEQUENCE_LENGTH
+trainvalid_data = pad_sequences(train_sequences, maxlen=MAX_SEQUENCE_LENGTH)
+test_data = pad_sequences(test_sequences, maxlen=MAX_SEQUENCE_LENGTH)
+trainvalid_labels = to_categorical(np.asarray(train_labels))
+test_labels = to_categorical(np.asarray(test_labels))
+
+Step 3: If we want to use pre-trained embeddings to convert the train and test data into an embedding matrix, like we did in the earlier examples with word2vec and fastText, we have to download them, and use them to convert our data into the input format for the neural networks. The following code snippet shows an example of how to do this using GloVe embeddings, which were introduced in Chapter 3. GloVe embeddings come with multiple dimensionalities, and we chose 100 as our dimension here. The value of dimensionality is a hyper-parameter and one can experiment with other dimensions as well. 
+
+[Python]
+embeddings_index = {}
+with open(os.path.join(GLOVE_DIR, 'glove.6B.100d.txt')) as f:
+	for line in f:
+    		values = line.split()
+    		word = values[0]
+    		coefs = np.asarray(values[1:], dtype='float32')
+    		embeddings_index[word] = coefs
+
+num_words = min(MAX_NUM_WORDS, len(word_index)) + 1
+embedding_matrix = np.zeros((num_words, EMBEDDING_DIM))
+for word, i in word_index.items():
+	if i > MAX_NUM_WORDS:
+    		continue
+	embedding_vector = embeddings_index.get(word)
+	if embedding_vector is not None:
+    		embedding_matrix[i] = embedding_vector
+
+Step 4: Now, we are ready to train deep learning models for text classification! Deep learning architectures consist of an input layer, an output layer, and several hidden layers in between these two layers. Depending on the architecture, different hidden layers are used. The input layer for textual input is typically an embedding layer. The output layer, especially in the context of text classification is a softmax layer with categorical output. If we want to train the input layer instead of using pre-trained embeddings, the easiest way is to call the Embedding layer class in Keras, specifying the input and output dimensions. However, since we want to use pre-trained embeddings, we should create a custom embedding layer which uses the embedding matrix we just built. The following code snippet shows you how to do that. 
+
+[Python]
+embedding_layer = Embedding(num_words, EMBEDDING_DIM,
+                        embeddings_initializer=Constant(embedding_matrix),
+                        input_length=MAX_SEQUENCE_LENGTH,
+                        trainable=False)
+print("Preparing of embedding matrix is done")
+
+This will serve as the input layer for any neural network we want to use (CNN or LSTM). Now that we know how to pre-process the input and define an input layer, let us move on specifying the rest of the neural network architecture, using CNNs and LSTMs.
+
+CNNs for Text Classification
+Let us now look at how to define, train, and evaluate a CNN model for text classification.  CNNs typically consist of a series of Convolution and Pooling layers as the hidden layers. In the context of text classification, CNNs can be thought of as learning the most useful bag-of-words/ngrams features, instead of taking the entire collection of words/ngrams as features as we did in earlier in this chapter. Since our dataset has only two classes - positive and negative, the output layer has two outputs, with the softmax activation function. We will define a CNN with 3 convolution-pooling layers using the Sequential model class in Keras, which allows us to specify deep learning models as a sequential stack of layers - one after another. Once the layers and their activation functions are specified, the next task is to define other important parameters such as the optimizer, loss function and the evaluation metric to tune the hyperparameters of the model. Once all this is done, the next step is to train and evaluate the model. The following code snippet shows one way of specifying a CNN architecture for this task using the Python library Keras, and the results with IMDB dataset for this model.
+
+[Python]
+print('Define a 1D CNN model.')
+cnnmodel = Sequential()
+cnnmodel.add(embedding_layer)
+cnnmodel.add(Conv1D(128, 5, activation='relu'))
+cnnmodel.add(MaxPooling1D(5))
+cnnmodel.add(Conv1D(128, 5, activation='relu'))
+cnnmodel.add(MaxPooling1D(5))
+cnnmodel.add(Conv1D(128, 5, activation='relu'))
+cnnmodel.add(GlobalMaxPooling1D())
+cnnmodel.add(Dense(128, activation='relu'))
+cnnmodel.add(Dense(len(labels_index), activation='softmax'))
+cnnmodel.compile(loss='categorical_crossentropy',
+          	     optimizer='rmsprop',
+          	     metrics=['acc'])
+cnnmodel.fit(x_train, y_train,
+      	batch_size=128,
+      	epochs=1, validation_data=(x_val, y_val))
+score, acc = cnnmodel.evaluate(test_data, test_labels)
+print('Test accuracy with CNN:', acc)
+
+As you can see in this code snippet, we made a lot of choices in specifying the model such as: activation functions, hidden layers, layer sizes, loss function, optimizer, metrics, epochs and batch size. While there are some commonly recommended options for these, there is no consensus on one combination that works best for all data sets and problems. A good approach while building your models is to experiment with different settings (called hyper parameters). Keep in mind that all these decisions come with some associated cost. For example, in practice, we have the number of epochs as 10 or above. But it also increases the amount of time it takes to train the model. Another thing to note is: if you want to train a embedding layer instead of using pre-trained embeddings in this model, the only thing that changes is the line: cnnmodel.add(embedding_layer). Instead of that, we can specify a new embedding layer, for example, as: cnnmodel.add(Embedding(Param1, Param2)). The Figure below shows the code snippet and model performance for the same.
+
+[Python]
+print("Defining and training a CNN model, training embedding layer on the fly instead of using pre-trained embeddings")
+cnnmodel = Sequential()
+cnnmodel.add(Embedding(MAX_NUM_WORDS, 128))
+…
+...
+cnnmodel.fit(x_train, y_train,
+      	batch_size=128,
+      	epochs=1, validation_data=(x_val, y_val))
+score, acc = cnnmodel.evaluate(test_data, test_labels)
+print('Test accuracy with CNN:', acc)
+
+If you run this code in the notebook, you will notice that, in this case, training the embedding layer on our own dataset seems to result in better classification on test data. However, if the training data were substantially small, sticking to the pre-trained embeddings, or using the domain adaptation techniques we will discuss later in this chapter would be a better choice. 
+
+LSTMs for Text Classification
+As we briefly saw in Chapter 1, LSTMs, and other variants of RNNs in general, have become the goto way of doing neural language modeling in the past few years.  This is primarily because language is sequential in nature and RNNs are specialized in working with sequential data. Current word in the sentence depends on its context - words before and after. However, when we model text using CNNs, this crucial fact is not taken into account. RNNs work on the principle of using this context while learning the language representation or a model of language. Hence, they are known to work well for NLP tasks. There are also CNN variants that can take such context into account and CNNs versus RNNs is  still an open area of debate. In this section, we will see an example of using RNNs for text classification. Now that we already saw one neural network in action, it is relatively easy to train another! Just replace the convolutional and pooling parts with an LSTM in the above two code examples! The following code snippet shows how to train an LSTM model using the same IMDB dataset for text classification. 
+
+[Python]
+print("Defining and training an LSTM model, training embedding layer on the fly")
+rnnmodel = Sequential()
+rnnmodel.add(Embedding(MAX_NUM_WORDS, 128))
+rnnmodel.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
+rnnmodel.add(Dense(2, activation='sigmoid'))
+rnnmodel.compile(loss='binary_crossentropy',
+          	optimizer='adam',
+          	metrics=['accuracy'])
+print('Training the RNN')
+rnnmodel.fit(x_train, y_train,
+      	batch_size=32,
+      	epochs=1,
+      	validation_data=(x_val, y_val))
+score, acc = rnnmodel.evaluate(test_data, test_labels,
+                        	batch_size=32)
+print('Test accuracy with RNN:', acc)
+You will notice that this code took much longer to run than the CNN example. One needs to note that while LSTMs are more powerful in utilizing the sequential nature of text, they are much more data hungry as compared to CNNs. Thus, the relative lower performance of the LSTM on a dataset need not necessarily be interpreted as a shortcoming of the model itself. It is possible that the amount of data we have is not sufficient to utilize the full potential of an LSTM. As with the case of CNN, several parameters, and hyper parameters play a very important role in the model performance, and it is always a good practice to explore multiple options and compare different models before finalizing on one. 
+
+Text Classification with large pre-trained language models 
+In the past two years, there were great improvements in using neural network based text representations for NLP tasks. We have discussed these under the section “Universal Text Representations” in Chapter 3. These representations have been successfully used for text classification in the recent past, by fine tuning the pre-trained models to the given task and dataset. BERT, which was mentioned in Chapter 3, is a popular model used in this way for text classification. Let us take a look at how to use BERT for text classification, using the IMDB dataset we used earlier in this section. Full code can be accessed in the relevant notebook (Ch4/BERT_Sentiment_Classification_IMDB.ipynb in the github repo). 
+
+We will use ktrain, a lightweight wrapper to train and use pre-trained deep learning models using the library Tensorflow Keras. Ktrain provides a straightforward process for all steps right from obtaining the dataset and the pre-trained BERT to fine tuning it for the classification task. Let us see how to load the dataset first through the code snippet below:
+
+[python]
+dataset = tf.keras.utils.get_file(
+fname="aclImdb.tar.gz", 	origin="http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz", extract=True,)
+
+Once the dataset is loaded, the next step is to download the BERT model and preprocess the dataset according to BERT’s requirement. The following code snippet shows how to do this with ktrain’s functions.
+
+[python]
+(x_train, y_train), (x_test, y_test), preproc = 
+                       text.texts_from_folder(IMDB_DATADIR,maxlen=500,                                                                   
+   preprocess_mode='bert',train_test_names=['train','test'],
+
+The next step is to load the pre-trained BERT model and fine tune it for this dataset. Here is the code snippet to do this.
+
+[python]
+model = text.text_classifier('bert', (x_train, y_train), preproc=preproc)
+learner=ktrain.get_learner(model,train_data=(x_train,y_train),    
+                       	val_data=(x_test, y_test), batch_size=6)
+learner.fit_onecycle(2e-5, 4)
+
+These three lines of code will train a text classifier using BERT pre-trained model. As with other examples we saw so far, one would need to do parameter tuning, and a lot of experimentation to pick the best performing model. We would leave that as an exercise to the reader. 
+
+In this section, we introduced the idea of using deep learning for text classification, using two neural network architectures - CNN and LSTM. There are several variants to these architectures, and new models are being proposed everyday by NLP researchers. We also saw how to use a large pre-trained language model such as BERT for this task. There are other such models, and this is a constantly evolving area in NLP research. Thus, the state of the art keeps changing every few months (or even weeks!).  However, in our experience as industry practitioners, several NLP tasks, especially text classification, still widely use several of the non-deep learning approaches we described earlier in the chapter. Two primary reasons for this are: lack of large amounts of task specific training data that neural networks demand, and issues related to computing and deployment costs. 
+
+TIP: Often deep learning based text classifiers are nothing but a condensed representation of the data they were trained on. These models are often as good as the training dataset. Selecting the right dataset becomes all the more important in such cases. 
+
+We will end this section reiterating what we mentioned earlier when we discussed the text classification pipeline - in most industrial settings, it always makes sense to start with a simpler, easy to deploy approach as your MVP and incrementally go  from there, taking customer needs and feasibility into account. Let us now look at how to address the first reason -lack of or poor quality  training data. 
+Learning with No or Less Data, and Adapting to New Domains
+
+So far, we have seen examples of training different text classifiers with different text representations. In all these examples, we had a relatively large training dataset available for the task. However, in most real world scenarios, such datasets are not readily available. In other cases, you may have an available annotated dataset, but it might not be large enough to train a good classifier. There can also be cases where you have a large dataset of, say, customer complaints and requests for one product suite, but you are asked to customize your classifier to another product suite, for which we have a very small amount of data i.e., adapting an existing model to a new domain. In this section, let us discuss how to build good classification systems for such scenarios where one has no or little data or one has to adapt to new domain training data. 
+No Training Data 
+Let us say you were asked to design a classifier for segregating customer complaints for your ecommerce company. The classifier is expected to automatically route customer complaint emails into a set of categories, say, billing, delivery, and others. If you are fortunate, you may discover a source of large amounts of annotated data for this task within the organization, in the form of a historical database of customer requests and their categories. If such a database does not exist, where should we start to build our classifier?
+
+The first step in such a scenario is the creation of an annotated dataset, where customer complaints are mapped to a set of categories mentioned above. One way to approach this is to get customer service agents to manually label some of the complaints, and use that as the training data for your machine learning model. Another approach is called  “bootstrapping” or “weak supervision”. There can be certain patterns of information in different categories of customer requests. Perhaps, billing related requests mention variants of the word bill, amounts in a currency etc. Delivery related requests talk about shipping, delays etc. One can get started with compiling some such patterns, and using their presence or absence in a customer request to label it, thereby creating a small (perhaps noisy) annotated dataset for this classification task. From here, one can build a classifier to annotate a larger collection of data.  Snorkel [17], a recent software tool developed by Stanford University, is a useful tool to deploy weak supervision for various learning tasks, including classification. Snorkel was used to deploy weak supervision based text classification models at industrial scale, at Google [18]. They showed that weak supervision could create classifiers comparable in quality to those trained on tens of thousands of hand labeled examples!
+
+In some other scenarios, where large scale collection of data is necessary and feasible, crowdsourcing can be seen as an option to label the data. Websites such as Amazon Mechanical Turk (https://www.mturk.com/) and figure-eight.com provide platforms to make use of human intelligence to create high quality training data for machine learning tasks. A popular example of using the wisdom of crowds to create a classification dataset is the “Captcha test” which Google uses to ask if a set of images contain a given object (e.g., Select all images that contain a street sign.).
+
+Less Training Data: Active Learning and Domain Adaptation
+In the scenario described earlier when you collected small amounts of data using human annotations or bootstrapping, it may sometimes turn out that the amount of data was too small to build a good classification model. It is also possible that most of the requests we collected belonged to billing, and very few belonged to the other categories - which will result in a highly imbalanced dataset. Asking the agents to spend many hours doing manual annotation is not always feasible. What should we do in such scenarios?  
+
+One approach to address such problems is “active learning”, which is primarily about identifying which data points are more crucial to be used as training data. It helps to answer the following question - if you had 1000 data points but could get only 100 of them labelled, which 100 will you choose? What this means is that when it comes to training data, not all data points are equal. Some data points are more important as compared to others in determining the quality of the classifier trained. Active learning converts this into a continuous process. 
+
+The first step in active learning involves training the classifier with the available amount of data, and start using it to make predictions on new data. For the data points where the classifier is very unsure of its predictions, send them to human annotators for correct classification. Then, include these data points to the existing training data and re-train the model. This process is repeated until a satisfactory model performance is reached. Tools such as Prodi.gy [19] have active learning solutions implemented for text classification, and support the efficient usage of active learning to create annotated data and text classification models quickly. The basic intuition behind active learning is as follows: the data points where the model is less confident are the data points that contribute most significantly in improving the quality of the model - hence get only those data points labeled.  
+
+Now, Imagine a scenario for your customer complaint classifier, where you have a lot of historical data for a range of products. However, you are now asked to tune it to work on a set of newer products. What is potentially challenging in this situation?  Typical text classification approaches rely on the vocabulary of the training data. Hence, they are inherently biased towards the kind of language seen in the training data. So, if the new products are of a very different nature (e.g., model is trained on a suite of electronic products, and we are using it with complaints on cosmetic products), the pre-trained classifiers trained on some other source data are unlikely to perform well. However, it is also not realistic to train a new model from scratch on each product or product suite, as we will again run into the problem of insufficient training data. Domain adaptation is a method to address such scenarios, this is also called Transfer Learning. Here in we “transfer” what we learnt from one domain (source) with large amounts of data to another domain (target), with lesser amount of labeled, but large amounts of unlabeled data. 
+A typical pipeline for domain adaptation in text classification looks as follows:
+Start with a large, pre-trained language model trained on a large dataset of the source domain (e.g., Wikipedia data).
+Fine-tune this model using the target language’s unlabeled data
+Train a classifier on the labeled target domain data, by extracting feature representations from the fine-tuned language model from Step 2. 
+ULMFit [20] is a popular domain adaptation approach for text classification. In research experiments, it was shown that this approach matches the performance of training from scratch with 10-20 times more training examples with only 100 labeled examples in text classification tasks. When unlabeled data was used to fine tune the pre-trained language model, it matched the performance of using 50-100 times more labeled examples when trained from scratch, on the same text classification tasks. Transfer learning methods are currently an active area of research in NLP.  Neither their use for text classification has yet shown dramatic improvements on standard datasets nor are they commonly used in industry setup yet. But we can expect to see this approach yielding better results in the near future. 
+
+A Case Study: Corporate Ticketing
+Let us consider a real-world scenario and how we can apply some of these concepts we discussed in this section to it.  Imagine you are asked to build a ticketing system for your organization which will track all the tickets or issues people face in the organization and route them to either internal or external agents. Figure 4-8 shows a representative screenshot for such a system - it is a corporate ticketing system called Spoke. 
+
+Figure 4-8 A corporate ticketing system
+Now let us say your company has recently hired a medical counsel and partnered with a hospital. So your system should also be able to pinpoint any medical related issue and route it to relevant people and teams. But while you have some past tickets, none of them are labeled whether they are health related. In absence of these labels how will you go about building such a health issue related classification system? 
+Let us explore a couple of options:
+Use Existing APIs or Libraries: One option is to start with a public API or a library and map its classes to what is relevant to you. For instance, if we look at the Google APIs we mentioned earlier in the chapter that it can classify content into over 700 categories. There are 82 categories that are associated with medical or health issues. These include categories like /Health/Health Conditions/Pain Management, /Health/Medical Facilities & Services/Doctors' Offices, /Finance/Insurance/Health Insurance etc. 
+While not all categories are relevant to your organisation, some could be and you can map these accordingly. For instance, let us say your company does not consider substance abuse and obesity issues as relevant for medical counsel. So, you can ignore /Health/Substance Abuse and /Health/Health Conditions/Obesity in this API. Similarly whether insurance should be a part of HR or referred outside, can be handled with these categories. 
+Use Public Datasets: You can also adopt public datasets for your needs. For example, 20 Newsgroups is a popular text classification dataset, which is also a part of the sklearn library. It has a range of topics including sci.med. We can also use it to train a basic classifier, classifying all other topics in one category and sci.med in another. 
+Utilize Weak Supervision: We have a history of past tickets, but they are not labelled.  So, we can consider bootstrapping a dataset out of it using the approaches described earlier in this section. For example, consider having a rule - “if the past ticket contains words like Fever, Diarrhea, Headache or Nausea you put them in the medical counsel category”. This rule can create a small amount of data, which we can use as a starting point for our classifier. 
+Active Learning: We can use tools like Prodigy to conduct data collection experiments, where we ask someone working in the customer service desk to look at ticket descriptions and tag them with a preset list of categories. Figure 4-9 shows an example of using prodigy for this purpose.
+
+Figure 4-9: Active Learning with Prodigy
+Learning from Implicit and Explicit Feedback: Throughout the process of building, iterating and deploying this solution, you are getting feedback that you can use to improve your system. Explicit feedback can be when the medical counsel or the hospital explicitly says that the ticket was not relevant. Implicit feedback can be extracted from other dependent variables like ticket response times and ticket response rates. All of these could be factored to improve your model, using active learning techniques. 
+A sample pipeline summarizing these ideas may look as shown in Figure 4-10. We start with no labeled data and either use public API, or a model created with public dataset or weak supervision as the first baseline model. Once we put this model to production we will get explicit and implicit signals on where it is working or failing. We use this information to refine our model. Active learning to select the best set of instances that need to be labeled. Over time we as we collect more data we can build more sophisticated and deeper models. 
+
+		Figure 4-10: A pipeline for building a classifier when there is no training data
+
+In this section, we started looking at a practical scenario of not having enough training data for building our own text classifier, for our custom problem. We discussed several possible solutions to address this issue. Hopefully, this helps you foresee and prepare for some of the scenarios related to data collection and creation in your future projects related to text classification.
+Practical Advice
+
+So far, we showed a range of different methods for building text classifiers, and potential issues you may run into. We would like to end this chapter with some practical advice that summarizes our observations and experience with building text classification systems in industry. Most of these are generic enough to be applied to other topics in the book as well.
+
+Establish strong baselines: A common fallacy is to start with a state-of-the-art algorithm. This is especially true in the present era of deep learning, where every day new approaches/algorithms keep coming up. However, it is always good to start with simpler approaches and try to establish strong baselines first. This is useful for three main reasons:   
+ a) Helps you get a better understanding of the problem statement and key challenges.
+ b) Building a quick MVP helps us get initial feedback from end-users and stakeholders.
+ c) A state of the art research model may give us only a minor improvement compared to     the baseline, but might come with a huge amount of technical debt.
+
+Balanced Training Data: While working with classification, it is very important to have a balanced dataset where all categories have an equal representation. An imbalanced dataset can adversely impact the learning of the algorithm and result in a biased classifier. While we cannot always control this aspect of the training data, there are various techniques to fix class imbalance in the training data. Some of them are: collecting more data, resampling – under sample from majority classes or oversample from minority classes, and weight balancing. 
+
+Combining models and humans in the loop: In practical scenarios, it makes sense to combine the outputs of multiple classification models, and hand-crafted rules from domain experts to achieve the best performance for the business. In other cases, it is practical to defer the decision to a human evaluator, if the machine is not sure of its classification decision. Finally, there could also be scenarios where the learnt model has to change with time and newer data. We will discuss some solutions for such scenarios in the last part of the book which focuses on end to end systems. 
+
+Make it work, make it better: Building a classification system, is not just about building a model. For most industrial settings, building a model is often just 5-10% of the total project. Rest consists of gathering data, building data pipelines, deployment, testing, monitoring etc. it is always good to build quickly build a model, use it to build a system and then start improvement iterations. This helps you to quickly identify major roadblocks and the parts need the most work, and often it is not the modeling part. 
+
+Wisdom of many: Every text classification algorithm has its own strengths and weaknesses. There is no single algorithm that always works well. One way to circumvent this is via ensembling - train multiple classifiers. The data is passed through every classifier and the predictions generated are combined (ex: majority voting) to arrive at a final class prediction. An interested reader can look at the work of Dong et. al [36, 37] for a deep dive in ensemble methods for text classification. 
+Wrapping Up
+
+In this chapter, we saw how to address the problem of text classification from multiple viewpoints. We discussed how to identify a classification problem, how to tackle the various stages in a text classification pipeline, how to collect data to create relevant datasets, use different feature representations and train several classification algorithms. With this, we hope you are now well equipped and ready to solve text classification problems for your use case and scenario - how to use existing solutions, how to build our own classifiers using various methods, and how to tackle the roadblocks one may face in this process. We focused only on one aspect of building text classification systems in industry applications i.e., building the model. Issues related to the end to end deployment of NLP systems will be dealt with in Chapter 11. In the next chapter, we will use some of the ideas we learnt here to tackle a related, but different NLP problem - Information Extraction.
+
