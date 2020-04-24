@@ -1,5 +1,5 @@
 # Practical NLP
-Repo for notebooks for the book
+Repository for notebooks for the book
 
 
 # Practical Natural Language Processing
