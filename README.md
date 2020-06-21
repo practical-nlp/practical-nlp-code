@@ -15,6 +15,8 @@
 
 Chapter-wise code notebooks:
 
+  * [Chapter 2: NLP Pipeline](https://github.com/practical-nlp/practical-nlp/tree/master/Ch2) 
+
   * [Chapter 3: Text Representation](https://github.com/practical-nlp/practical-nlp/tree/master/Ch3) 
 
   * [Chapter 4: Text Classification](https://github.com/practical-nlp/practical-nlp/tree/master/Ch4) 
@@ -27,6 +29,9 @@ Chapter-wise code notebooks:
   
   * [Chapter 8: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch8) 
     
-  * [Chapter 9: ](https://github.com/practical-nlp/practical-nlp/tree/master/Ch9)
+  * [Chapter 9: E-commerce and Retail ](https://github.com/practical-nlp/practical-nlp/tree/master/Ch9)
 
+  * [Chapter 10: Healthcare, Finance and Law](https://github.com/practical-nlp/practical-nlp/tree/master/Ch10) 
+    
+  * [Chapter 11: End-to-End NLP Process](https://github.com/practical-nlp/practical-nlp/tree/master/Ch11)
 
