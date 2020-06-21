@@ -9,8 +9,9 @@
 
 <!-- ![](http://check-server.in/book/images/book.png =250x250)](http://practicalnlp.ai) -->
 
-
+<a href="http://www.practicalnlp.ai)">
 <img src="http://check-server.in/book/images/book.png" width="450" height="700">
+</a>
 
 ### Open the repository in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/practical-nlp/practical-nlp/blob/master)
 
