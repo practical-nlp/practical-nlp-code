@@ -7,7 +7,7 @@
 
 -----------------------------------------------------------------------------------
 
-[[](http://check-server.in/book/images/book.png)](http://practicalnlp.ai)
+[![](http://check-server.in/book/images/book.png)](http://practicalnlp.ai)
 
 ### Open the  repository in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/practical-nlp/practical-nlp/blob/master)
 
@@ -15,14 +15,18 @@
 
 Chapter-wise code notebooks:
 
-  * [Chapter 3: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch3) 
+  * [Chapter 3: Text Representation](https://github.com/practical-nlp/practical-nlp/tree/master/Ch3) 
 
-  * [Chapter 4: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch4) 
+  * [Chapter 4: Text Classification](https://github.com/practical-nlp/practical-nlp/tree/master/Ch4) 
   
-  * [Chapter 5: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch5) 
+  * [Chapter 5: Information Extraction](https://github.com/practical-nlp/practical-nlp/tree/master/Ch5) 
   
-  * [Chapter 6: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch6) 
+  * [Chapter 6: ChatBots](https://github.com/practical-nlp/practical-nlp/tree/master/Ch6) 
   
-  * [Chapter 7: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch7) 
+  * [Chapter 7: Topics in Brief](https://github.com/practical-nlp/practical-nlp/tree/master/Ch7) 
+  
+  * [Chapter 8: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch8) 
+    
+  * [Chapter 9: ](https://github.com/practical-nlp/practical-nlp/tree/master/Ch9)
 
 
