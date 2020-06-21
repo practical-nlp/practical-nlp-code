@@ -1,4 +1,3 @@
-
 # Social Media
 
 Set of notebooks associated with Chapter 8 of the book
@@ -7,12 +6,11 @@ Set of notebooks associated with Chapter 8 of the book
 
 2. **[Effect of different tokenizers on Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/DifferentTokenizers.ipynb)** : Here we show how different tokenizers can give different output for the same input text. When dealing to text data from social platforms this can have huge bearing on the performance of the task.  Here, we will be working with 5 different tokenizers, namely:
 
-  - [word_tokenize from NLTK](https://www.nltk.org/api/nltk.tokenize.html)
-  - [TweetTokenizer from NLTK](https://www.nltk.org/api/nltk.tokenize.html)
-  - [Twikenizer](https://pypi.org/project/twikenizer/)
-  - [Twokenizer by ARK@CMU](http://www.cs.cmu.edu/~ark/TweetNLP/)
-  - [twokenize](https://github.com/leondz/twokenize)
-    
+    * [word_tokenize from NLTK](https://www.nltk.org/api/nltk.tokenize.html)
+   * [TweetTokenizer from NLTK](https://www.nltk.org/api/nltk.tokenize.html)
+   * [Twikenizer](https://pypi.org/project/twikenizer/)
+   * [Twokenizer by ARK@CMU](http://www.cs.cmu.edu/~ark/TweetNLP/)
+   * [twokenize](https://github.com/leondz/twokenize)  
 
 3. [Trending topics](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/TrendingTopics.ipynb): Find trending topics on Twitter using tweepy
 
