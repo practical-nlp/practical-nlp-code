@@ -1,3 +1,4 @@
+
 # Social Media
 
 Set of notebooks associated with Chapter 8 of the book
@@ -10,14 +11,15 @@ Set of notebooks associated with Chapter 8 of the book
    * [TweetTokenizer from NLTK](https://www.nltk.org/api/nltk.tokenize.html)
    * [Twikenizer](https://pypi.org/project/twikenizer/)
    * [Twokenizer by ARK@CMU](http://www.cs.cmu.edu/~ark/TweetNLP/)
-   * [twokenize](https://github.com/leondz/twokenize)  
+   * [twokenize](https://github.com/leondz/twokenize)
+    
 
-3. [Trending topics](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/TrendingTopics.ipynb): Find trending topics on Twitter using tweepy
+3. **[Trending topics](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/TrendingTopics.ipynb)**: Find trending topics on Twitter using tweepy
 
-4. [Sentiment Analysis](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/Textblob.ipynb): Basic sentiment analysis using TextBlob 
+4. **[Sentiment Analysis](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/Textblob.ipynb)**: Basic sentiment analysis using TextBlob 
 
-5. [Preprocessing Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/smtd_preprocessing.py): Common steps involved in pre-processing pipeline for Social Media Text Data
+5. **[Preprocessing Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/smtd_preprocessing.py)**: Common steps involved in pre-processing pipeline for Social Media Text Data
 
-6. Text representation of Social Media Text Data: How to use embeddings to represent Social Media Text Data
+6. **[Text representation of Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/SMTD_embeddings.ipynb)**: How to use embeddings to represent Social Media Text Data
 
-8. Sentiment Analysis:  
+8. **Sentiment Analysis**:  Here we use the preprocessing and representation steps learnt before to build a better classifier. 
