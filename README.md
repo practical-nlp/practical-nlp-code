@@ -5,7 +5,7 @@
 -----------------------------------------------------------------------------------
 Chapter-wise code notebooks for [Practical Natural Language Processing](http://practicalnlp.ai)
 
-![](http://www.practicalnlp.ai/book-link-1.png)
+![](http://check-server.in/book/images/book.png)
 
 Chapter-wise notebooks for the book 'Practical Natural Language Processing'
 
