@@ -7,7 +7,7 @@
 
 -----------------------------------------------------------------------------------
 
-[![](http://check-server.in/book/images/book.png)](http://practicalnlp.ai)
+[![](http://check-server.in/book/images/book.png =250x250)](http://practicalnlp.ai)
 
 ### Open the  repository in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/practical-nlp/practical-nlp/blob/master)
 
