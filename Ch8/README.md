@@ -1,30 +1,25 @@
 
-Chapter 8
+# Social Media
 
-Social Media
+Set of notebooks associated with Chapter 8 of the book
 
-1. Create wordcloud: How to create a wordcloud to get a quick sense of given text corpus. 
+1. **[Create a wordcloud](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/WordCloud.ipynb)**: How to create a wordcloud. This is often used to get a quick sense of given text corpus at hand.
 
-2. Effect of tokenizer On Social Media Text Data : Here we show how different tokenizer perform for given text data. We will with 5 different tokenizers. 
+2. **[Effect of different tokenizers on Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/DifferentTokenizers.ipynb)** : Here we show how different tokenizers can give different output for the same input text. When dealing to text data from social platforms this can have huge bearing on the performance of the task.  Here, we will be working with 5 different tokenizers, namely:
 
-    word_tokenize from NLTK
+  - [word_tokenize from NLTK](https://www.nltk.org/api/nltk.tokenize.html)
+  - [TweetTokenizer from NLTK](https://www.nltk.org/api/nltk.tokenize.html)
+  - [Twikenizer](https://pypi.org/project/twikenizer/)
+  - [Twokenizer by ARK@CMU](http://www.cs.cmu.edu/~ark/TweetNLP/)
+  - [twokenize](https://github.com/leondz/twokenize)
     
-    TweetTokenizer from NLTK [64]
-    
-    Twikenizer [65]
-    
-    Twokenizer by ARK@CMU [62]
-    
-    twokenize [61]
 
-3. Trending topics: Show trending topics on Twitter using tweepy
+3. [Trending topics](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/TrendingTopics.ipynb): Find trending topics on Twitter using tweepy
 
-4. Sentiment Analysis: Basic sentiment analysis using TextBlob 
+4. [Sentiment Analysis](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/Textblob.ipynb): Basic sentiment analysis using TextBlob 
 
-5. Preprocessing Social Media Text Data: Common steps involved in pre-processing pipeline for Social Media Text Data
+5. [Preprocessing Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/smtd_preprocessing.py): Common steps involved in pre-processing pipeline for Social Media Text Data
 
 6. Text representation of Social Media Text Data: How to use embeddings to represent Social Media Text Data
 
-7. 
-
-
+8. Sentiment Analysis:  
