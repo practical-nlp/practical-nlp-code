@@ -6,6 +6,7 @@
 **WARNING!** To avoid buying counterfeit on Amazon, click on **[See All Buying Options](https://www.amazon.com/gp/offer-listing/1492054054/)** and choose "Amazon.com" and not a third-party seller.
 
 -----------------------------------------------------------------------------------
+
 Chapter-wise code notebooks for [Practical Natural Language Processing](http://practicalnlp.ai)
 
 ![](http://check-server.in/book/images/book.png)
@@ -13,6 +14,10 @@ Chapter-wise code notebooks for [Practical Natural Language Processing](http://p
 ### Open the  repository in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/practical-nlp/practical-nlp/blob/master)
 
 ### Open in Jupyter nbviewer: [![Open in nbviewer](https://user-images.githubusercontent.com/2791223/29387450-e5654c72-8294-11e7-95e4-090419520edb.png)](https://nbviewer.jupyter.org/github/practical-nlp/practical-nlp/tree/master/)
+
+
+
+  * [Chapter 8: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch8) 
 
 
 
