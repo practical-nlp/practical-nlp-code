@@ -12,11 +12,11 @@
 
 <img src="http://check-server.in/book/images/book.png" width="450" height="700">
 
-### Open the  repository in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/practical-nlp/practical-nlp/blob/master)
+### Open the repository in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/practical-nlp/practical-nlp/blob/master)
 
-### Open in Jupyter nbviewer: [![Open in nbviewer](https://user-images.githubusercontent.com/2791223/29387450-e5654c72-8294-11e7-95e4-090419520edb.png)](https://nbviewer.jupyter.org/github/practical-nlp/practical-nlp/tree/master/)
+### Open the repository in Jupyter nbviewer: [![Open in nbviewer](https://user-images.githubusercontent.com/2791223/29387450-e5654c72-8294-11e7-95e4-090419520edb.png)](https://nbviewer.jupyter.org/github/practical-nlp/practical-nlp/tree/master/)
 
-Chapter-wise code notebooks:
+### Chapter-wise code notebooks:
 
   * [Chapter 2: NLP Pipeline](https://github.com/practical-nlp/practical-nlp/tree/master/Ch2) 
 
