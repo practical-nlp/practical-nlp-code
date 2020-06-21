@@ -1,7 +1,7 @@
 # Practical Natural Language Processing: A Comprehensive Guide to Building Real-World NLP Systems
 #### Sowmya Vajjala, Bodhisattwa P. Majumder, Anuj Gupta, Harshit Surana
 #### [www.practicalnlp.ai](http://www.practicalnlp.ai)
-#### Published by O'Reilly Media, 2020 (http://shop.oreilly.com/product/0636920262329.do)
+#### Published by [O'Reilly Media, 2020](http://shop.oreilly.com/product/0636920262329.do)
 -----------------------------------------------------------------------------------
 Chapter-wise code notebooks for [Practical Natural Language Processing](http://practicalnlp.ai)
 
