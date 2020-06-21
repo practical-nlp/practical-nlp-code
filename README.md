@@ -7,7 +7,7 @@
 
 -----------------------------------------------------------------------------------
 
-<> ![](http://check-server.in/book/images/book.png =250x250)](http://practicalnlp.ai)
+[//]: <> ![](http://check-server.in/book/images/book.png =250x250)](http://practicalnlp.ai)
 
 
 <img src="http://check-server.in/book/images/book.png" width="350" height="500">
