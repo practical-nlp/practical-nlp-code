@@ -9,7 +9,7 @@ Chapter-wise code notebooks for [Practical Natural Language Processing](http://p
 
 Chapter-wise notebooks for the book 'Practical Natural Language Processing'
 
-### Open Repository in Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/practical-nlp/practical-nlp/blob/master)
+### Open the entire repository in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/practical-nlp/practical-nlp/blob/master)
 
 ## Open in Jupyter nbviewer  
 [![Open in nbviewer](https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/250px-Jupyter_logo.svg.png)](https://nbviewer.jupyter.org/github/anujgupta82/Practical_NLP/tree/master/)
