@@ -7,17 +7,22 @@
 
 -----------------------------------------------------------------------------------
 
-Chapter-wise code notebooks for [Practical Natural Language Processing](http://practicalnlp.ai)
-
-![](http://check-server.in/book/images/book.png)
+![[](http://check-server.in/book/images/book.png)](http://practicalnlp.ai)
 
 ### Open the  repository in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/practical-nlp/practical-nlp/blob/master)
 
 ### Open in Jupyter nbviewer: [![Open in nbviewer](https://user-images.githubusercontent.com/2791223/29387450-e5654c72-8294-11e7-95e4-090419520edb.png)](https://nbviewer.jupyter.org/github/practical-nlp/practical-nlp/tree/master/)
 
+Chapter-wise code notebooks:
 
+  * [Chapter 7: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch3) 
 
-  * [Chapter 8: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch8) 
-
+  * [Chapter 4: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch4) 
+  
+  * [Chapter 5: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch5) 
+  
+  * [Chapter 6: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch6) 
+  
+  * [Chapter 8: Social Media](https://github.com/practical-nlp/practical-nlp/tree/master/Ch7) 
 
 
