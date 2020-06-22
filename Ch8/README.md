@@ -16,7 +16,7 @@ Set of notebooks associated with Chapter 8 of the book
 
 3. **[Trending topics](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/03_TrendingTopics.ipynb)**: Find trending topics on Twitter using tweepy
 
-4. **[Sentiment Analysis](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/04_Textblob.ipynb)**: Basic sentiment analysis using TextBlob 
+4. **[Sentiment Analysis](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/04_Sentiment_Analysis_Textblob.ipynb)**: Basic sentiment analysis using TextBlob 
 
 5. **[Preprocessing Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/05_smtd_preprocessing.py)**: Common steps involved in pre-processing pipeline for Social Media Text Data
 
