@@ -1,2 +1,5 @@
-# Practical NLP
-Code for "Practical NLP" book
+
+# Text Representation
+
+Set of notebooks associated with Chapter 3 of the book.
+
