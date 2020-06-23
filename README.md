@@ -1,9 +1,16 @@
-# Practical Natural Language Processing: A Comprehensive Guide to Building Real-World NLP Systems
+# Practical Natural Language Processing
+## A Comprehensive Guide to Building Real-World NLP Systems
 #### [Sowmya Vajjala](https://www.linkedin.com/in/sowmya-vajjala-2a38734/), [Bodhisattwa P. Majumder](http://www.majumderb.com/), [Anuj Gupta](https://www.linkedin.com/in/anujgupta-82/), [Harshit Surana](http://harshitsurana.com/)
-#### [www.practicalnlp.ai](http://www.practicalnlp.ai)
+#### Homepage: [www.practicalnlp.ai](http://www.practicalnlp.ai)
 #### Published by [O'Reilly Media, 2020](http://shop.oreilly.com/product/0636920262329.do)
 
-**WARNING!** To avoid buying counterfeit on Amazon, click on **[See All Buying Options](https://www.amazon.com/gp/offer-listing/1492054054/)** and choose "Amazon.com" and not a third-party seller.
+-----------------------------------------------------------------------------------
+
+```
+Please note, the code repository is still under development.
+
+All the notebooks will be crystalized in the coming months.
+```
 
 -----------------------------------------------------------------------------------
 
