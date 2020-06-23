@@ -1,4 +1,4 @@
-# Test Classification
+# Text Classification
 
 Set of notebooks associated with Chapter 4 of the book.
 
