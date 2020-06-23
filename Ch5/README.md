@@ -17,3 +17,4 @@ Set of notebooks associated with Chapter 5 of the book.
 7. **[Relation Extraction](https://github.com/practical-nlp/practical-nlp/blob/master/Ch5/07_REWatson.ipynb)**: Here we demonstrate Relation Extraction with IBM Watson.
 
 8. **[Duckling](https://github.com/practical-nlp/practical-nlp/blob/master/Ch5/08_Duckling.ipynb)**: Here we demonstrate Temporal IE using duckling.
+
