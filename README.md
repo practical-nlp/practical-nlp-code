@@ -24,7 +24,7 @@ All the notebooks will be crystalized in the coming months.
 
 ### Open the repository in Jupyter nbviewer: [![Open in nbviewer](https://user-images.githubusercontent.com/2791223/29387450-e5654c72-8294-11e7-95e4-090419520edb.png)](https://nbviewer.jupyter.org/github/practical-nlp/practical-nlp/tree/master/)
 
-### Chapter-wise code notebooks:
+### Chapterwise code notebooks:
 
   * [Chapter 2: NLP Pipeline](https://github.com/practical-nlp/practical-nlp/tree/master/Ch2) 
 
