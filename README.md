@@ -7,7 +7,7 @@
 -----------------------------------------------------------------------------------
 
 ```
-Please note that the code repository is still under development.
+Please note that the code repository is still under development and review.
 
 All the notebooks will be crystalized in the coming months.
 ```
