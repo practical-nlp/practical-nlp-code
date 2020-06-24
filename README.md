@@ -1,11 +1,11 @@
 # Practical Natural Language Processing
 ## A Comprehensive Guide to Building Real-World NLP Systems
 #### [Sowmya Vajjala](https://www.linkedin.com/in/sowmya-vajjala-2a38734/), [Bodhisattwa P. Majumder](http://www.majumderb.com/), [Anuj Gupta](https://www.linkedin.com/in/anujgupta-82/), [Harshit Surana](http://harshitsurana.com/)
-#### Homepage: [www.practicalnlp.ai](http://www.practicalnlp.ai)
 
 #### Endorsed by Zachary Lipton, Sebastian Ruder & Marc Najork
 #### Foreword by Julian McAuley
 
+#### Homepage: [www.practicalnlp.ai](http://www.practicalnlp.ai)
 #### Published by [O'Reilly Media, 2020](http://shop.oreilly.com/product/0636920262329.do)
 
 -----------------------------------------------------------------------------------
