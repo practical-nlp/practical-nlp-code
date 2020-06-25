@@ -3,7 +3,7 @@
 #### [Sowmya Vajjala](https://www.linkedin.com/in/sowmya-vajjala-2a38734/), [Bodhisattwa P. Majumder](http://www.majumderb.com/), [Anuj Gupta](https://www.linkedin.com/in/anujgupta-82/), [Harshit Surana](http://harshitsurana.com/)
 
 
-#### Endorsed by [Zachary Lipton](http://zacklipton.com/), [Sebastian Ruder](https://ruder.io/), [Marc Najork](http://marc.najork.org/) & [Monojit Choudhury](https://www.microsoft.com/en-us/research/people/monojitc/)
+#### Endorsed by [Zachary Lipton](http://zacklipton.com/), [Sebastian Ruder](https://ruder.io/), [Marc Najork](http://marc.najork.org/), [Monojit Choudhury](https://www.microsoft.com/en-us/research/people/monojitc/) & [Vinayak Hegde](https://www.linkedin.com/in/vinayakh/)
 #### Foreword by [Julian McAuley](https://cseweb.ucsd.edu/~jmcauley/)
 
 
