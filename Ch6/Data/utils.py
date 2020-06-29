@@ -9,7 +9,7 @@ def get_data(filename):
         sents.append(df[beg_indices[i]+1:beg_indices[i+1]-1]['word'].values)
         labels.append(df[beg_indices[i]+1:beg_indices[i+1]-1]['label'].values)
         intents.append(df.loc[beg_indices[i+1]-1]['label'])    
-    return np.array(sents),np.array(labels),np.array(intents)
+    return np.array(sents, dtype=object), np.array(labels, dtype=object), np.array(intents, dtype=object)
 
 def get_data2(filename):
     with open(filename) as f:
@@ -20,12 +20,12 @@ def get_data2(filename):
         sents.append(words[1:-1])
         labels.append(labs[1:-1])
         intents.append(labs[-1])
-    return np.array(sents),np.array(labels),np.array(intents)
+    return np.array(sents, dtype=object), np.array(labels, dtype=object), np.array(intents, dtype=object)
 
-read_method = {'data2/atis-2.dev.w-intent.iob':get_data,
-               'data2/atis.train.w-intent.iob':get_data2,
-               'data2/atis.test.w-intent.iob':get_data,
-              'data2/atis-2.train.w-intent.iob':get_data2}
+read_method = {'Data/data2/atis-2.dev.w-intent.iob':get_data,
+               'Data/data2/atis.train.w-intent.iob':get_data2,
+               'Data/data2/atis.test.w-intent.iob':get_data,
+              'Data/data2/atis-2.train.w-intent.iob':get_data2}
 
 def fetch_data(fname):
     func = read_method[fname]
