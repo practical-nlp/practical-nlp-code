@@ -55,17 +55,27 @@ All the notebooks will be crystalized in the coming months.
 
 -----------------------------------------------------------------------------------
 
-* Contributors to Codebase*:
+Contributors to Codebase:
 
-[Varun Purushotham]()
-[Kartikay Bagla]()
-[Taranjeet Singh]()
-[Vishal Gupta]()
-[Shreyans Dhankhar]()
-[Nachiketh]()
-[Jitin Kapila]()
-[Kumarjit Pathak]()
-[Ernest Kirubakaran Selvaraj]()
-[Ayush Datta]()
-[Rui Shu]()
+* [Varun Purushotham]()
+
+* [Kartikay Bagla]()
+
+* [Taranjeet Singh]()
+
+* [Vishal Gupta]()
+
+* [Shreyans Dhankhar]()
+
+* [Nachiketh]()
+
+* [Jitin Kapila]()
+
+* [Kumarjit Pathak]()
+
+* [Ernest Kirubakaran Selvaraj]()
+
+* [Ayush Datta]()
+
+* [Rui Shu]()
 
