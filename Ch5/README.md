@@ -8,9 +8,9 @@ Set of notebooks associated with Chapter 5 of the book.
 
 3. **[NER issues in spaCy](https://github.com/practical-nlp/practical-nlp/blob/master/Ch5/03_NERIssues.ipynb)**: Here we  illustrate some of the issues with existing NER model in spacy and its sensitivity to text structure.
 
-4. **[NER on CONLL using spaCy](https://github.com/practical-nlp/practical-nlp/blob/master/Ch5/04_NER_using_spaCy%20-%20CoNLL.ipynb)**: Here we NER on the CONLL-NER dataset using spaCy.
+4. **[NER on CONLL using spaCy](https://github.com/practical-nlp/practical-nlp/blob/master/Ch5/04_NER_using_spaCy%20-%20CoNLL.ipynb)**: Here we demonstrate NER on the CONLL-NER dataset using spaCy.
 
-5. **[NER on CONLL using BERT](https://github.com/practical-nlp/practical-nlp/blob/master/Ch5/05_BERT_CONLL_NER.ipynb)**: Here we NER on the CONLL dataset using pytorch pre-trained BERT from the HuggingFace Transformers library. 
+5. **[NER on CONLL using BERT](https://github.com/practical-nlp/practical-nlp/blob/master/Ch5/05_BERT_CONLL_NER.ipynb)**: Here we demonstrate NER on the CONLL dataset using pytorch pre-trained BERT from the HuggingFace Transformers library. 
 
 6. **[Entity Linking](https://github.com/practical-nlp/practical-nlp/blob/master/Ch5/06_EntityLinking-AzureTextAnalytics.ipynb)**: Here we demonstrate how to extract Named Entity linking information using Azure Text Analytics API.
 
