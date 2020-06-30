@@ -54,3 +54,26 @@ All the notebooks will be crystalized in the coming months.
   * [Chapter 11: End-to-End NLP Process](https://github.com/practical-nlp/practical-nlp/tree/master/Ch11)
 
 -----------------------------------------------------------------------------------
+
+Contributors to Codebase:
+
+* [Varun Purushotham](https://www.linkedin.com/in/varunp2k/)
+* [Kartikay Bagla](https://www.linkedin.com/in/kartikay-bagla-60638a167/)
+* [Taranjeet Singh]()
+
+* [Vishal Gupta]()
+
+* [Shreyans Dhankhar]()
+
+* [Nachiketh]()
+
+* [Jitin Kapila]()
+
+* [Kumarjit Pathak]()
+
+* [Ernest Kirubakaran Selvaraj]()
+
+* [Ayush Datta]()
+
+* [Rui Shu]()
+
