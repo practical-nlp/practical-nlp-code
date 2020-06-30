@@ -57,10 +57,8 @@ All the notebooks will be crystalized in the coming months.
 
 Contributors to Codebase:
 
-* [Varun Purushotham]()
-
-* [Kartikay Bagla]()
-
+* [Varun Purushotham](https://www.linkedin.com/in/varunp2k/)
+* [Kartikay Bagla](https://www.linkedin.com/in/kartikay-bagla-60638a167/)
 * [Taranjeet Singh]()
 
 * [Vishal Gupta]()
