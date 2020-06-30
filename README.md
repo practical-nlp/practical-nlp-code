@@ -59,21 +59,13 @@ Contributors to Codebase:
 
 * [Varun Purushotham](https://www.linkedin.com/in/varunp2k/)
 * [Kartikay Bagla](https://www.linkedin.com/in/kartikay-bagla-60638a167/)
-* [Taranjeet Singh]()
-
-* [Vishal Gupta]()
-
-* [Shreyans Dhankhar]()
-
-* [Nachiketh]()
-
+* [Taranjeet Singh](https://www.linkedin.com/in/taranjeet7114/)
+* [Vishal Gupta](https://www.linkedin.com/in/vishalg8897/)
+* [Shreyans Dhankhar](https://www.linkedin.com/in/shreyans-dhankhar-501b88118/)
+* [Nachiketh Suresh](https://www.linkedin.com/in/nachiketh-suresh-a4955411/)
 * [Jitin Kapila]()
-
 * [Kumarjit Pathak]()
-
 * [Ernest Kirubakaran Selvaraj]()
-
 * [Ayush Datta]()
-
 * [Rui Shu]()
 
