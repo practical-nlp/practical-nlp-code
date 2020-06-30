@@ -64,8 +64,8 @@ Contributors to Codebase:
 * [Shreyans Dhankhar](https://www.linkedin.com/in/shreyans-dhankhar-501b88118/)
 * [Nachiketh Suresh](https://www.linkedin.com/in/nachiketh-suresh-a4955411/)
 * [Jitin Kapila](https://www.linkedin.com/in/jitinkapila/)
-* [Kumarjit Pathak]()
-* [Ernest Kirubakaran Selvaraj]()
-* [Ayush Datta]()
-* [Rui Shu]()
+* [Kumarjit Pathak](https://www.linkedin.com/in/kumarjitpathak/)
+* [Ernest Kirubakaran Selvaraj](https://www.linkedin.com/in/ernest-s-kirubakaran/)
+* [Ayush Datta](https://www.linkedin.com/in/ayushdatta/)
+* [Rui Shu](https://www.linkedin.com/in/rui-shu/)
 
