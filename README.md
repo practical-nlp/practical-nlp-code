@@ -54,3 +54,7 @@ All the notebooks will be crystalized in the coming months.
   * [Chapter 11: End-to-End NLP Process](https://github.com/practical-nlp/practical-nlp/tree/master/Ch11)
 
 -----------------------------------------------------------------------------------
+
+Contributors to Codebase:
+
+
