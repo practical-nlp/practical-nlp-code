@@ -1,16 +1,22 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository. <br>
-Please send detailed descriptions of the error/change you are suggesting.<br>
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+Contributing to open source projects is one of the best ways to improve your development skills, build up your experience in software development or even build your personal brand. If you’re a new open source contributor, the process can be intimidating. We want to make your contribution experience as smooth as possible.<br>
+If you find a bug in the code notebooks or want to add a new notebook we prefer that you open an issue in this repo. In the issue please provide us details about the bug such as notebook link, python version, error(including full traceback) and where your running the notebook(local or colab). We are currently working on creating a template for reporting bugs and for adding featues.
+<br>
+
+From here you can do one of two these two things:
+1. Wait for us to fix the bug.
+2. Fix the bug yourself and send a pull request.
+We highly encourage you to fix the bug yourself and send a pull request.
 
 ## Pull Request Process
 
 1. Please open an issue first.
-2. Wait for us to approve it.
-3. Once approved, you can start working on making the necessary changes.
-4. Please follow good coding standards and include ample comments.
+2. Fork the repository.
+3. Clone the forked repository.
+4. You can start working on making the necessary changes.
+5. When your done, push the changes to your forked repository.
+6. Head to the forked repository and click on a Compare & pull request button.
 5. Add short yet descriptive and easy to understand descriptions for all the changes you make.
 ## Code of Conduct
 
