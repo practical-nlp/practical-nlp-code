@@ -6,7 +6,7 @@ If you find a bug in the code notebooks or want to add a new notebook we prefer 
 
 From here you can do one of two these two things:
 1. Wait for us to fix the bug.
-2. Fix the bug yourself and send a pull request.
+2. Fix the bug yourself and send a pull request.<br>
 We highly encourage you to fix the bug yourself and send a pull request.
 
 ## Pull Request Process
