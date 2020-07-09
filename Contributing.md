@@ -1,6 +1,10 @@
 # Contributing
 
-Contributing to open source projects is one of the best ways to improve your development skills, build up your experience in software development or even build your personal brand. If you’re a new open source contributor, the process can be intimidating. We want to make your contribution experience as smooth as possible.<br>
+We strongly believe open sourcing projects for contributions is one of the best ways to improve the qulaity of the project. We are etternally thankful to our readers for pointing out typographical errors and bugs. If you’re a new open source contributor, the process can be intimidating. We want to make your contribution experience as smooth as possible.<br>
+
+If you find a typographical error in the book text, kindly open a errata via this link:
+[https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329](https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329)
+
 If you find a bug in the code notebooks or want to add a new notebook we prefer that you open an issue in this repo. In the issue please provide us details about the bug such as notebook link, python version, error(including full traceback) and where your running the notebook(local or colab). We are currently working on creating a template for reporting bugs and for adding featues.
 <br>
 
