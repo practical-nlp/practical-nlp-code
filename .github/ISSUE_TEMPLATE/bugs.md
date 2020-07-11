@@ -1,4 +1,4 @@
-This template is **ONLY** used for reporting bugs in the code.
+This template is **ONLY** to be used for reporting bugs in the code.
 
 <!--- Provide a summary of the issue in the Title-->
 
