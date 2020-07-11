@@ -24,13 +24,10 @@ This template is **ONLY** used for reporting bugs in the code.
 4.
 
 ## Context (Environment)
-<!--- Please mention if you faced this bug while running the notebook on colab or localhost-->
+<!-- Please mention if you faced this bug while running the notebook on colab or localhost-->
 <!-- Please mention the python version you are using. -->
 <!-- Please mention environment details such as operating system, conda or pip venv . -->
 <!-- Please provide any more details you feel necessary -->
-
-## Detailed Description
-<!--- Provide a detailed description of the change or addition you are proposing -->
 
 ## Possible Implementation
 <!--- Not obligatory, but suggest an idea for implementing addition or change -->
