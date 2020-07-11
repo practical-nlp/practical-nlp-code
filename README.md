@@ -65,3 +65,12 @@ Contributors to Codebase:
 * [Ayush Datta](https://www.linkedin.com/in/ayushdatta/)
 * [Rui Shu](https://www.linkedin.com/in/rui-shu/)
 
+-----------------------------------------------------------------------------------
+
+Found a Bug?
+
+If the bug is in book text, please eneter a errata here: 
+[https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329](https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329) 
+
+If the ug is in the codebase:
+Great! Please read [this](https://github.com/practical-nlp/practical-nlp/edit/master/Contributing.md) how can you help us improve the codebase
