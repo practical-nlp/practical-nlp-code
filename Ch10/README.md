@@ -1,6 +1,6 @@
 # Healthcare, Finance & Law 
 
-Set of notebooks associated with Chapter 10 of the book.
+Set of notebooks associated with topics covered Chapter 10 of the book.
 
 1. **[BioBERT](https://github.com/practical-nlp/practical-nlp/blob/master/Ch10/01_BioBERT_Demo.ipynb)**: Here we demonstrate how to load and use BioBERT which is a pre-trained bio-medical language representation model for various bio-medical text mining tasks perform the task of text classification.
 
