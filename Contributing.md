@@ -5,7 +5,7 @@ We strongly believe open sourcing projects for contributions is one of the best 
 If you find a typographical error in the book text, kindly open a errata via this link:
 [https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329](https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329)
 
-If you find a bug in the code notebooks or want to add a new notebook we prefer that you open an issue in this repo. In the issue please provide us details about the bug such as notebook link, python version, error(including full traceback) and where your running the notebook(local or colab). We are currently working on creating a template for reporting bugs and for adding featues.
+If you find a bug in the code notebooks or want to add a new notebook we prefer that you open an issue in this repo. In the issue please provide us details about the bug such as notebook link, python version, error(including full traceback) and where your running the notebook(local or colab). You can find the ISSUES Template [here](https://github.com/practical-nlp/practical-nlp/tree/master/.github/ISSUE_TEMPLATE).
 <br>
 
 From here you can do one of two these two things:
