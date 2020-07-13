@@ -22,6 +22,9 @@ We highly encourage you to fix the bug yourself and send a pull request.
 5. When your done, push the changes to your forked repository.
 6. Head to the forked repository and click on a Compare & pull request button.
 5. Add short yet descriptive and easy to understand descriptions for all the changes you make.
+<br>
+We will soon be adding a PULL REQUESTS Template.<br>
+
 ## Code of Conduct
 
 ### Our Pledge
