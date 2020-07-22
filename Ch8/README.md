@@ -18,7 +18,7 @@ Set of notebooks associated with Chapter 8 of the book
 
 4. **[Sentiment Analysis](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/04_Sentiment_Analysis_Textblob.ipynb)**: Basic sentiment analysis using TextBlob 
 
-5. **[Preprocessing Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/05_smtd_preprocessing.py)**: Common steps involved in pre-processing pipeline for Social Media Text Data
+5. **[Preprocessing Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/O5_smtd_preprocessing.py)**: Common functions involved in pre-processing pipeline for Social Media Text Data.
 
 6. **[Text representation of Social Media Text Data](https://github.com/practical-nlp/practical-nlp/blob/master/Ch8/06_SMTD_embeddings.ipynb)**: How to use embeddings to represent Social Media Text Data
 
