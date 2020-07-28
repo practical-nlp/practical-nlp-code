@@ -69,7 +69,7 @@ Contributors to Codebase:
 
 Found a Bug?
 
-If the bug is in book text, please eneter a errata here: 
+If the bug is in book text, please enter a errata here: 
 [https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329](https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329) 
 
 If the bug is in the codebase:
