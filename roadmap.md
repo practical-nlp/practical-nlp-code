@@ -16,3 +16,17 @@ We think the following features, enhancements & fixes are most relevant for 2020
 - [ ] Input sample & stats demonstrated for all notebooks
 - [ ] Output sample demonstrated for all notebooks
 - [ ] Output visualization demonstrated where possible
+
+# 🚘 Milestones
+
+The roadmap is broken into the following milestones. 
+
+## 🚧 Version 1.5
+
+- All platform accessibility-related issues to be resolved
+- The first draft of pedagogical enhancements
+
+## 🏁 Version 1.9
+
+- Input & output to be demonstrated well for all notebooks
+- Other user requests handled
