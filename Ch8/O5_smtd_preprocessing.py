@@ -316,6 +316,9 @@ def remove_spl_words(transient_tweet_text):
 	return transient_tweet_text
 
 def remove_emoji(transient_tweet_text):
+    '''
+    replace emoji with the respective emotion
+    '''
     tweet_tokenizer = TweetTokenizer()
     tokenized_tweet = tweet_tokenizer.tokenize(transient_tweet_text)
     emojis_present = demoji.findall(transient_tweet_text)
@@ -328,6 +331,9 @@ def remove_emoji(transient_tweet_text):
     return tweet_no_emoji
 
 def deEmojify(transient_tweet_text):
+    '''
+    remove all emojis which were not replaced by their respective emotion
+    '''
     return transient_tweet_text.encode('ascii', 'ignore').decode('ascii')
 
 # def print_test():
