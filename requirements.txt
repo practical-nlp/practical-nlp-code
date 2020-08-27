@@ -150,7 +150,7 @@ summa==1.2.0
 sumy==0.8.1
 tabulate==0.8.7
 tensorboard==1.14.0
-tensorflow==1.15.2
+tensorflow==1.14.0
 tensorflow-estimator==1.14.0
 termcolor==1.1.0
 terminado==0.8.3
