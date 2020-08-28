@@ -22,8 +22,10 @@ Please note that the code repository is still under development and review.
 
 All the notebooks will be crystalized in the coming months. 
 
-```
+The notebooks have been tested on an ubuntu machine running python 3.6. 
 
+Currently, we are using TF1.x. We will migrate to TF2.x in the coming months.  
+```
 🚩 Details of the repository roadmap could be found [here](roadmap.md)
 
 -----------------------------------------------------------------------------------
