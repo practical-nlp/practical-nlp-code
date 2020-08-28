@@ -36,6 +36,20 @@
 
 ## Figures
 
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-1.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-2.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-3.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-4.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-5.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-6.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-7.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-8.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-9.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-10.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-11.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-12.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-13.png)
+
 
 ## Notebooks
 
