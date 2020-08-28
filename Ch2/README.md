@@ -1,6 +1,43 @@
 
 # NLP Pipeline
 
+## Chapter Outline
+
+* Data Acquisition
+*  Text Extraction and Cleanup
+  *  HTML Parsing and Cleanup
+  *  Unicode Normalization
+  *  Spelling Correction
+  *  System-Specific Error Correction
+*  Pre-Processing
+  *  Preliminaries
+  *  Frequent Steps
+  *  Other Pre-Processing Steps
+  *  Advanced Processing
+*  Feature Engineering
+*  Classical NLP/ML Pipeline
+*  DL Pipeline
+*  Modeling
+*  Start with Simple Heuristics
+*  Building Your Model
+*  Building THE Model
+*  Evaluation
+*  Intrinsic Evaluation
+*  Extrinsic Evaluation
+*   Post-Modeling Phases
+*  Deployment
+*  Monitoring
+*  Model Updating
+*  Working with Other Languages
+*  Case Study
+*  Wrapping Up
+*  References
+
+## Figures
+
+
+## Notebooks
+
 Set of notebooks associated with Chapter 2 of the book
 
 1. **[Web Scraping using BeautifulSoup](https://github.com/practical-nlp/practical-nlp/blob/master/Ch2/01_WebScraping_using_BeautifulSoup.ipynb)**: Here we demostrate to scrape a web page(we use stackoverflow.com here as an example) and parse html using bs4 to find and extract relevant information.
