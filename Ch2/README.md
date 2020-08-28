@@ -1,7 +1,9 @@
 
 # NLP Pipeline
 
-## Chapter Outline
+## Outline
+
+Section outline as covered in the book. 
 
 * Data Acquisition
 * Text Extraction and Cleanup
@@ -36,6 +38,8 @@
 
 ## Figures
 
+Color figures as requested by the readers. 
+
 ![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-1.png)
 ![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-2.png)
 ![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-3.png)
@@ -49,6 +53,8 @@
 ![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-11.png)
 ![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-12.png)
 ![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-13.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-14.png)
+![figure](https://github.com/practical-nlp/practical-nlp-figures/raw/master/figures/2-15.png)
 
 
 ## Notebooks
