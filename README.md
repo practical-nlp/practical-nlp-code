@@ -4,7 +4,7 @@
 
 **Endorsed by:**
 [Zachary Lipton](http://zacklipton.com/), [Sebastian Ruder](https://ruder.io/), [Marc Najork](http://marc.najork.org/), [Monojit Choudhury](https://www.microsoft.com/en-us/research/people/monojitc/), [Vinayak Hegde](https://www.linkedin.com/in/vinayakh/), [Mengting Wan](https://mengtingwan.github.io/), [Siddharth Sharma](https://www.linkedin.com/in/siddharth-sharma-31140210/), & [Ed Harris](https://www.linkedin.com/in/e10is/)
-**Foreword by [Julian McAuley](https://cseweb.ucsd.edu/~jmcauley/)**
+**Foreword by **[Julian McAuley](https://cseweb.ucsd.edu/~jmcauley/)
 
 
 Homepage: [www.practicalnlp.ai](http://www.practicalnlp.ai)
@@ -36,7 +36,9 @@ Currently, we are using TF1.x. We will migrate to TF2.x in the coming months.
 
 ### Open the repository in Jupyter nbviewer: [![Open in nbviewer](https://user-images.githubusercontent.com/2791223/29387450-e5654c72-8294-11e7-95e4-090419520edb.png)](https://nbviewer.jupyter.org/github/practical-nlp/practical-nlp/tree/master/)
 
-### Chapterwise code notebooks:
+### Chapterwise folders:
+
+  * [Chapter 1: NLP: A Primer](https://github.com/practical-nlp/practical-nlp/tree/master/Ch1) (only figures & outline)
 
   * [Chapter 2: NLP Pipeline](https://github.com/practical-nlp/practical-nlp/tree/master/Ch2) 
 
@@ -58,25 +60,23 @@ Currently, we are using TF1.x. We will migrate to TF2.x in the coming months.
     
   * [Chapter 11: End-to-End NLP Process](https://github.com/practical-nlp/practical-nlp/tree/master/Ch11)
 
------------------------------------------------------------------------------------
 
-Contributors to Codebase:
+**Contributors to Codebase:**
 
 * [Varun Purushotham](https://www.linkedin.com/in/varunp2k/)
 * [Kartikay Bagla](https://www.linkedin.com/in/kartikay-bagla-60638a167/)
-* [Taranjeet Singh](https://www.linkedin.com/in/taranjeet7114/)
-* [Vishal Gupta](https://www.linkedin.com/in/vishalg8897/)
-* [Shreyans Dhankhar](https://www.linkedin.com/in/shreyans-dhankhar-501b88118/)
-* [Nachiketh Suresh](https://www.linkedin.com/in/nachiketh-suresh-a4955411/)
 * [Jitin Kapila](https://www.linkedin.com/in/jitinkapila/)
+* [Vishal Gupta](https://www.linkedin.com/in/vishalg8897/)
+* [Taranjeet Singh](https://www.linkedin.com/in/taranjeet7114/)
+* [Shreyans Dhankhar](https://www.linkedin.com/in/shreyans-dhankhar-501b88118/)
 * [Kumarjit Pathak](https://www.linkedin.com/in/kumarjitpathak/)
 * [Ernest Kirubakaran Selvaraj](https://www.linkedin.com/in/ernest-s-kirubakaran/)
 * [Ayush Datta](https://www.linkedin.com/in/ayushdatta/)
 * [Rui Shu](https://www.linkedin.com/in/rui-shu/)
+* [Nachiketh Suresh](https://www.linkedin.com/in/nachiketh-suresh-a4955411/)
 
------------------------------------------------------------------------------------
 
-Found a Bug?
+**Found a Bug?**
 
 If the bug is in book text, please enter a errata here: 
 [https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329](https://www.oreilly.com/catalog/errata.csp?isbn=0636920262329) 
