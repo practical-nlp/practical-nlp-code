@@ -88,7 +88,7 @@ nbformat==5.0.7
 networkx==2.4
 neuralcoref==4.0
 nltk==3.5
-notebook==6.0.3
+notebook==6.1.5
 numexpr==2.7.1
 numpy==1.19.0
 nvidia-ml-py3==7.352.0
