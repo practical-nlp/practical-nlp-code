@@ -52,7 +52,7 @@ ipywidgets==7.5.1
 isort==4.3.4
 jedi==0.17.1
 jellyfish==0.8.2
-Jinja2==2.11.2
+Jinja2==2.11.3
 jmespath==0.10.0
 joblib==0.15.1
 JPype1==0.7.5
