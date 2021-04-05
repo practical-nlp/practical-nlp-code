@@ -1,3 +1,15 @@
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 **/.ipynb_checkpoints
+
+# Chapter 2
+Ch2/GoogleNews-vectors-negative300.bin
+Ch2/GoogleNews-vectors-negative300.bin.gz
+Ch2/nlpaug
+Ch2/snorkel-tutorials
+Ch2/spelling_en.txt
+
+# Chapter 3
+Ch3/data
+Ch3/model_cbow.bin
+Ch3/model_skipgram.bin
