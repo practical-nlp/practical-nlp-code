@@ -33,13 +33,15 @@ import demoji
 demoji.download_codes()
 from nltk.tokenize import TweetTokenizer
 
-#gobal
+# Global
+
 PunctChars = r'''[`'“".?!,:;]'''
 Punct = '%s+' % PunctChars
 Entity = '&(amp|lt|gt|quot);'
 printable = set(string.printable)
 
-# helper functoins
+# Helper functoins.
+
 def regex_or(*items):
 	r = '|'.join(items)
 	r = '(' + r + ')'
@@ -55,6 +57,7 @@ def optional(r):
 	return '(%s)?' % r
 
 def trim(transient_tweet_text):
+
 	''' 
 	trim leading and trailing spaces in the tweet text
 	'''
@@ -112,7 +115,8 @@ def process_URLs(transient_tweet_text):
 	Url_RE = re.compile("(%s)" % Url, re.U|re.I)
 	transient_tweet_text = re.sub(Url_RE, " constanturl ", transient_tweet_text)
 
-	# fix to handle unicodes in URL
+	# Fix to handle unicodes in URL.
+
 	URL_regex2 = r'\b(htt)[p\:\/]*([\\x\\u][a-z0-9]*)*'
 	transient_tweet_text = re.sub(URL_regex2, " constanturl ", transient_tweet_text)
 	return transient_tweet_text
@@ -155,9 +159,9 @@ def process_Dates(transient_tweet_text):
 	'''
 	Identify date and convert it to constant
 	'''
-	#transient_tweet_text = re.sub(r'(\d+/\d+/\d+)', " constantdate " , transient_tweet_text)
-	#transient_tweet_text = re.sub(r'constantnum[\s]?(/|-)[\s]?constantnum[\s]?(/|-)[\s]?constantnum', " constantdate " , transient_tweet_text)
-	#date_regex = r'(constantnum)[\s]*(st|nd|rd|th)[\s]*(january|jan|february|feb|march|mar|april|may|june|jun|july|august|aug|september|sep|october|oct|november|nov|december|dec)'
+	# transient_tweet_text = re.sub(r'(\d+/\d+/\d+)', " constantdate " , transient_tweet_text)
+	# transient_tweet_text = re.sub(r'constantnum[\s]?(/|-)[\s]?constantnum[\s]?(/|-)[\s]?constantnum', " constantdate " , transient_tweet_text)
+	# date_regex = r'(constantnum)[\s]*(st|nd|rd|th)[\s]*(january|jan|february|feb|march|mar|april|may|june|jun|july|august|aug|september|sep|october|oct|november|nov|december|dec)'
 	date_regex1 = r'\b((0|1|2|3)?[0-9][\s]*)[-./]([\s]*([012]?[0-9])[\s]*)([-./]([\s]*(19|20)[0-9][0-9]))?\b'
 	transient_tweet_text = re.sub(date_regex1, ' constantdate ' , transient_tweet_text)
 	date_regex2 = r'\b((19|20)[0-9][0-9][\s]*[-./]?)?[\s]*([012]?[0-9])[\s]*[-./][\s]*(0|1|2|3)?[0-9]\b'
@@ -221,11 +225,11 @@ def identify_Savings(transient_tweet_text):
 	'''
 	identify sale/save offers
 	'''
-	#sale_regex = r'(?<!#)\b(discount|discounts|sale|save|saver|super[\s]*saver|super[\s]*save)\b[\s]*(constantnum)*[\s]*[%]?[\s]*(-|~)?[\s]*(constantnum)*[\s]*[%]?'
+	# sale_regex = r'(?<!#)\b(discount|discounts|sale|save|saver|super[\s]*saver|super[\s]*save)\b[\s]*(constantnum)*[\s]*[%]?[\s]*(-|~)?[\s]*(constantnum)*[\s]*[%]?'
 	sale_regex = r'(?<!#)\b(discount|discounts|sale|save|saver|super[\s]*saver|super[\s]*save)\b[\s]*((rs|\$)*[\s]*(constantnum))*[\s]*[%]?[\s]*(-|~|or)?[\s]*((rs|\$)*[\s]*(constantnum))*[\s]*[%]?'
 	transient_tweet_text = re.sub(sale_regex, " constantdiscount ", transient_tweet_text)
-	#discount_List = []
-	#discount_List = re.findall(r'constantdiscount', transient_tweet_text)
+	# discount_List = []
+	# discount_List = re.findall(r'constantdiscount', transient_tweet_text)
 	return transient_tweet_text
 
 def indentify_Offers(transient_tweet_text):
@@ -233,11 +237,11 @@ def indentify_Offers(transient_tweet_text):
 	identify cashbacks and off / substrings of the form "30% off" or "30% cashback" or "$30 off"
 	Replace them by constantOFFER
 	'''
-	#transient_tweet_text = re.sub(r'[rs|$]?[ ]*[constantnum][ ]*[%]?[ ]?[off|cashback|offer]', "constantoffer", transient_tweet_text)
+	# transient_tweet_text = re.sub(r'[rs|$]?[ ]*[constantnum][ ]*[%]?[ ]?[off|cashback|offer]', "constantoffer", transient_tweet_text)
 	transient_tweet_text = re.sub(r'(?<!#)\b(?:(up[\s]?to)?((rs|\$)*[\s]*(constantnum))[\s]*[%]?)?[\s]*[-|~|or]?[\.]?[\s]*((rs|\$)*[\s]*(constantnum))*[\s]*[%]?[\s]*(offer|off|cashback|cash|cash back)', " constantoffer ", transient_tweet_text)
 	transient_tweet_text = re.sub(r'(?<!#)\b(?:cashback|cash back|cash)\b', " constantoffer ", transient_tweet_text)
-	#Offer_List = []
-	#Offer_List = re.findall(r'constantoffer', transient_tweet_text)
+	# Offer_List = []
+	# Offer_List = re.findall(r'constantoffer', transient_tweet_text)
 	return transient_tweet_text
 
 def indentify_Promos(transient_tweet_text):
@@ -245,13 +249,13 @@ def indentify_Promos(transient_tweet_text):
 	indentify coupons/promos with promo codes
 	Assumption - promo code can be alphanumeric. But it immediately follows text of promo/code/promocode etc
 	'''
-	#transient_tweet_text = re.sub(r'\b(promocode|promo code|promo|code)[s]?[\s]*[a-z]*(constantnum)*[a-z]*[\s]+', " constantpromo ", transient_tweet_text)
+	# transient_tweet_text = re.sub(r'\b(promocode|promo code|promo|code)[s]?[\s]*[a-z]*(constantnum)*[a-z]*[\s]+', " constantpromo ", transient_tweet_text)
 	transient_tweet_text = re.sub(r'(?<!#)\b(?:promocode|promo code|promo|coupon code|code)\b[\s]*(constantalphanum)\b', " constantpromo ", transient_tweet_text)
 	transient_tweet_text = re.sub(r'(?<!#)\b(?:promocode|promo code|promo|coupon code|code)\b[\s]*[a-z]+\b', " constantpromo ", transient_tweet_text)
 	transient_tweet_text = re.sub(r'(?<!#)\b(?:promocode|promo code|promo|coupon code|code)\b[\s]*[0-9]+\b', " constantpromo ", transient_tweet_text)
 	transient_tweet_text = re.sub(r'(?<!#)\b(?:promocode|promo code|promo|coupon code|code|coupon)[s]?\b', " constantpromo ", transient_tweet_text)
-	#Promo_List = []
-	#Promo_List = re.findall(r'constantpromo', transient_tweet_text)
+	# Promo_List = []
+	# Promo_List = re.findall(r'constantpromo', transient_tweet_text)
 	return transient_tweet_text
 
 def indentify_Money(transient_tweet_text):
@@ -264,8 +268,8 @@ def indentify_Money(transient_tweet_text):
 	transient_tweet_text = re.sub(money_regex2, " constantmoney ", transient_tweet_text)
 	money_regex3 = r'(\$|rs)[\s]*constantalphanum'
 	transient_tweet_text = re.sub(money_regex3, " constantmoney ", transient_tweet_text)
-	#Money_List = []
-	#Money_List = re.findall(r'constantmoney', transient_tweet_text)
+	# Money_List = []
+	# Money_List = re.findall(r'constantmoney', transient_tweet_text)
 	return transient_tweet_text
 
 def indentify_freebies(transient_tweet_text):
@@ -360,9 +364,6 @@ def deEmojify(transient_tweet_text):
 # ############
 # print_test()
 
-
-
-
 def process_TweetText(tweet_text):
 	'''
 	Takes tweet_text and preprocesses it 
@@ -372,44 +373,50 @@ def process_TweetText(tweet_text):
 	'''
 
 	# get utf-8 encoding, lowercase, trim and remove multiple white spaces
+	
 	transient_tweet_text = tweet_text
 	transient_tweet_text = strip_unicode(transient_tweet_text)
-	#print "PROCESSED: ", transient_tweet_text
+	
+	# print "PROCESSED: ", transient_tweet_text
 
 	transient_tweet_text = to_LowerCase(transient_tweet_text)
 	transient_tweet_text = trim(transient_tweet_text)
 	transient_tweet_text = strip_whiteSpaces(transient_tweet_text)
 	transient_tweet_text = remove_spl_words(transient_tweet_text)
 
- 
-	#emoji
+	# Emoji
+	
 	transient_tweet_text = remove_emoji(transient_tweet_text) 
 	transient_tweet_text = deEmojify(transient_tweet_text)
-	# process Hastags, URLs, Websites, process_EmailIds
+	
+	# Process Hastags, URLs, Websites, process_EmailIds
 	# Give precedence to url over hashtag
+	
 	transient_tweet_text = process_URLs(transient_tweet_text)
 	transient_tweet_text = process_HashTags(transient_tweet_text)
-	#transient_tweet_text = process_Websites(transient_tweet_text)
+	
+	# transient_tweet_text = process_Websites(transient_tweet_text)
+	
 	transient_tweet_text = process_EmailIds(transient_tweet_text)
 
-	# process for brand mention, any other mention and brand Name
-	#transient_tweet_text = process_BrandMentions(transient_tweet_text)
-	#transient_tweet_text = process_NonBrandMentions(transient_tweet_text)
+	# Process for brand mention, any other mention and brand Name
+	# transient_tweet_text = process_BrandMentions(transient_tweet_text)
+	# transient_tweet_text = process_NonBrandMentions(transient_tweet_text)
 	transient_tweet_text = process_Mentions(transient_tweet_text)
 	#transient_tweet_text = process_BrandName(transient_tweet_text)
 
-	# remove any unicodes
+	# Remove any unicodes
 	transient_tweet_text = strip_unicode(transient_tweet_text)
 
-	# identify Date / Time if any
+	# Identify Date / Time if any
 	transient_tweet_text = process_Times(transient_tweet_text)
 	transient_tweet_text = process_Dates(transient_tweet_text)
 
-	# indentify alphanums and nums
+	# Identify alphanums and nums
 	transient_tweet_text = identify_AlphaNumerics(transient_tweet_text)
 	transient_tweet_text = replace_numbers(transient_tweet_text)
 	
-	# identify promos, savings, offers, money and freebies
+	# Identify promos, savings, offers, money and freebies
 	transient_tweet_text = indentify_Promos(transient_tweet_text)
 	transient_tweet_text = identify_Savings(transient_tweet_text)
 	transient_tweet_text = indentify_Offers(transient_tweet_text)
@@ -424,4 +431,4 @@ def process_TweetText(tweet_text):
 	return transient_tweet_text
 
 # if __name__ == "__main__":
-# print(process_TweetText("Nice @varun paytm @paytm saver abc@gmail.com sizes for the wolf on 20/10/2010 at 10:00PM  grey/deep royal-volt Nike Air Skylon II retro are 40% OFF for a limited time at $59.99 + FREE shipping.BUY HERE -> https://bit.ly/2L2n7rB (promotion - use code MEMDAYSV at checkout)"))
+#	print(process_TweetText("Nice @varun paytm @paytm saver abc@gmail.com sizes for the wolf on 20/10/2010 at 10:00PM  grey/deep royal-volt Nike Air Skylon II retro are 40% OFF for a limited time at $59.99 + FREE shipping.BUY HERE -> https://bit.ly/2L2n7rB (promotion - use code MEMDAYSV at checkout)"))
