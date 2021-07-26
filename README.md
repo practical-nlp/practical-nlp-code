@@ -74,6 +74,8 @@ Currently, we are using TF1.x. We will migrate to TF2.x in the coming months.
 * [Ayush Datta](https://www.linkedin.com/in/ayushdatta/)
 * [Rui Shu](https://www.linkedin.com/in/rui-shu/)
 * [Nachiketh Suresh](https://www.linkedin.com/in/nachiketh-suresh-a4955411/)
+* [Jatin Papreja](https://www.linkedin.com/in/jatin-papreja-71982bb9/)
+* [Kumar Apurva](https://www.linkedin.com/in/kumar-apurva-000b38197/)
 
 
 **Found a Bug?**
