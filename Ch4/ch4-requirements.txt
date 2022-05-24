@@ -5,7 +5,7 @@ nltk==3.5
 gensim==3.8.3
 wget==3.2
 fasttext==0.9.2
-tensorflow==1.14.0
+tensorflow==2.6.4
 torch==1.9.0
 pytorch_pretrained_bert==0.6.2
 pytorch-nlp==0.5.0  
