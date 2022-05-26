@@ -8,4 +8,4 @@ spacy==2.2.4
 requests==2.23.0
 nltk==3.2.5
 matplotlib==3.2.2
-tensorflow==1.14.0
+tensorflow==2.7.2
