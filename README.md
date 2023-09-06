@@ -27,6 +27,13 @@ The notebooks have been tested on an ubuntu machine running python 3.6.
 Currently, we are using TF1.x. We will migrate to TF2.x in the coming months.  
 ```
 
+---
+
+### :sparkles: A newer version compatible with Ubuntu 23 is being added in the branch [pnlp-refactor-ubuntu23](https://github.com/practical-nlp/practical-nlp-code/tree/pnlp-refactor-ubuntu23). 
+We especially thank all the educators & universities for their feedback in pointing out the issues & improving the accessibility of the notebooks. 
+
+---
+
 🚩 Details of the repository roadmap could be found [here](roadmap.md)
 
 -----------------------------------------------------------------------------------
