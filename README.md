@@ -26,6 +26,7 @@ The notebooks have been tested on an ubuntu machine running python 3.6.
 
 Currently, we are using TF1.x. We will migrate to TF2.x in the coming months.  
 ```
+
 🚩 Details of the repository roadmap could be found [here](roadmap.md)
 
 -----------------------------------------------------------------------------------
@@ -77,6 +78,7 @@ Currently, we are using TF1.x. We will migrate to TF2.x in the coming months.
 * [Jatin Papreja](https://www.linkedin.com/in/jatin-papreja-71982bb9/)
 * [Kumar Apurva](https://www.linkedin.com/in/kumar-apurva-000b38197/)
 * [Sukeerat Goindi](https://github.com/sukeeratsg)
+* [Abhijeetsingh Meena](https://github.com/Ethan0456)
 
 
 **Found a Bug?**
