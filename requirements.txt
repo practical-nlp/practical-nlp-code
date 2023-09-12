@@ -15,7 +15,7 @@ Bottleneck==1.3.2
 breadability==0.1.20
 cachetools==4.1.0
 catalogue==1.0.0
-certifi==2020.6.20
+certifi==2022.12.7
 chardet==3.0.4
 click==7.1.2
 colorama==0.4.3
