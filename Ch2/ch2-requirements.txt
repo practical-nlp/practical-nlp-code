@@ -8,7 +8,7 @@ nlpaug==0.0.14
 snorkel==0.9.6
 treedlib==0.1.3
 numbskull==0.1.1
-tensorflow==1.15
+tensorflow==2.9.3
 tensorboard==1.15
 nltk==3.2.5
 matplotlib==3.2.2
