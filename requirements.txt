@@ -174,7 +174,7 @@ watson-developer-cloud==2.10.1
 wcwidth==0.2.4
 webencodings==0.5.1
 websocket-client==0.48.0
-Werkzeug==1.0.1
+Werkzeug==2.2.3
 widgetsnbextension==3.5.1
 wincertstore==0.2
 wrapt==1.12.1
