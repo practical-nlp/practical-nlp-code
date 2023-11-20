@@ -167,7 +167,7 @@ tornado==6.0.4
 tqdm==4.46.1
 traitlets==4.3.3
 transformers==2.11.0
-urllib3==1.25.9
+urllib3==1.26.5
 vaderSentiment==3.3.2
 wasabi==0.7.0
 watson-developer-cloud==2.10.1
