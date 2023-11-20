@@ -113,7 +113,7 @@ pybind11==2.5.0
 pycorenlp==0.3.0
 pycountry==19.8.18
 pyemd==0.5.1
-Pygments==2.6.1
+Pygments==2.7.4
 pylint==2.1.1
 pyparsing==2.4.7
 Pyphen==0.9.5
